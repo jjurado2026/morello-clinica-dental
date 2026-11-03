@@ -1,14 +1,14 @@
 /* =====================================================================
    Morelló Clínica Dental · propuesta de home, ronda 2
-   Colores de su logo y su web. Boska + Satoshi.
+   Colores de su logo y su web. Boska + Switzer.
    Solo se animan transform y opacity.
    ===================================================================== */
 
 @font-face { font-family: 'Boska'; src: url('../fonts/boska-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Boska'; src: url('../fonts/boska-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Satoshi'; src: url('../fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('../fonts/switzer-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('../fonts/switzer-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('../fonts/switzer-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 
 :root {
   /* marca */
@@ -32,7 +32,7 @@
   --gris-claro: #8A9BA8;
   /* tipografía */
   --f-titular: 'Boska', 'Didot', Georgia, serif;
-  --f-texto: 'Satoshi', 'Segoe UI', system-ui, sans-serif;
+  --f-texto: 'Switzer', 'Segoe UI', system-ui, sans-serif;
   /* espaciado */
   --e1: 4px; --e2: 8px; --e3: 12px; --e4: 16px; --e5: 24px; --e6: 32px; --e7: 48px; --e8: 64px; --e9: 96px;
   --canal: clamp(16px, 4.2vw, 64px);
