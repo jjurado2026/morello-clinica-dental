@@ -47,10 +47,10 @@
     setTimeout(function () { if (!window.MORELLO) { d.classList.remove('anima'); d.classList.add('quieto'); } }, 4000);
   })(document.documentElement);
 </script>
-<link rel="preload" href="assets/fonts/bespoke-slab-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/boska-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/doctores-morello-1440.webp" imagesrcset="assets/img/doctores-morello-640.webp 640w, assets/img/doctores-morello-960.webp 960w, assets/img/doctores-morello-1440.webp 1440w, assets/img/doctores-morello-1919.webp 1919w" imagesizes="(min-width: 900px) 92vw, 100vw" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/estilos.css?v=2">
+<link rel="stylesheet" href="assets/css/estilos.css?v=4">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -131,8 +131,8 @@
       </ul>
     </nav>
     <div class="cabecera__acciones">
-      <a class="boton boton--fino" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="934 182 129">934 182 129</span></a>
-      <a class="boton boton--fino" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
+      <a class="boton boton--fino" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="934 182 129">934 182 129</span></a>
+      <a class="boton boton--fino" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
     </div>
     <button class="cabecera__menu" type="button" aria-expanded="false" aria-controls="menu-movil"><svg class="ico"><use href="#i-menu"/></svg><span>Menú</span></button>
   </div>
@@ -153,36 +153,64 @@
     </ul>
   </nav>
   <div class="menu-movil__pie">
-    <a class="boton" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llamar al 934 182 129">Llamar al 934 182 129</span></a>
-    <a class="boton" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
+    <a class="boton" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llamar al 934 182 129">Llamar al 934 182 129</span></a>
+    <a class="boton" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
     <p>Carrer de Muntaner, 571 - 2ºC, 08022 Barcelona</p>
   </div>
 </div>
 
 <main id="contenido">
 
-  <!-- ============ HERO: Doctores Morelló ============ -->
+  <!-- ============ HERO: los Doctores Morelló, bajo la lámpara del gabinete ============ -->
   <section class="hero" data-hero aria-labelledby="h1">
     <div class="hero__escena">
-      <figure class="hero__foto">
+      <figure class="hero__foto" data-gabinete>
         <img data-foto src="assets/img/doctores-morello-1440.webp" srcset="assets/img/doctores-morello-640.webp 640w, assets/img/doctores-morello-960.webp 960w, assets/img/doctores-morello-1440.webp 1440w, assets/img/doctores-morello-1919.webp 1919w" sizes="(min-width: 900px) 92vw, 100vw" width="1919" height="905" alt="El Dr. Joan Morelló Cubells y la Dra. Carmen Morelló con la bata de la clínica" fetchpriority="high">
-        <div class="punto" style="--x: 25.9%; --y: 58.6%">
-          <button class="punto__boton" type="button" aria-expanded="false" aria-controls="punto-joan"><span class="punto__anillo" aria-hidden="true"></span><span class="sr">Quién es: Dr. Joan Morelló Cubells</span></button>
-          <div class="punto__ficha" id="punto-joan" role="note"><strong>Dr. Joan Morelló Cubells</strong><span>Fundó la clínica en 1982</span></div>
+        <div class="luz" aria-hidden="true"></div>
+        <div class="lampara" aria-hidden="true">
+          <svg viewBox="0 0 240 220">
+            <defs>
+              <radialGradient id="l-cara" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#E4F8FB"/><stop offset="1" stop-color="#B9DDE6"/></radialGradient>
+              <radialGradient id="l-halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset=".5" stop-color="#D2F5FA" stop-opacity=".45"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+              <linearGradient id="l-haz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset=".3" stop-color="#E8FAFD" stop-opacity=".22"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+              <linearGradient id="l-metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE4EA"/></linearGradient>
+            </defs>
+            <g class="lampara__brazo">
+              <rect class="lampara__techo" x="152" y="-2" width="52" height="8" rx="2"/>
+              <path class="lampara__barra" d="M178 6V40"/>
+              <path class="lampara__barra" d="M178 44L128 80"/>
+              <circle class="lampara__junta" cx="178" cy="44" r="6"/>
+              <circle class="lampara__junta" cx="128" cy="82" r="5.5"/>
+            </g>
+            <g class="lampara__cabeza">
+              <path class="lampara__haz" d="M62 152L158 152L262 420L-42 420Z"/>
+              <path class="lampara__barra lampara__barra--fina" d="M128 86L110 100"/>
+              <path class="lampara__horquilla" d="M48 146A62 48 0 0 1 172 146"/>
+              <ellipse class="lampara__halo" cx="110" cy="150" rx="104" ry="56"/>
+              <ellipse class="lampara__cuerpo" cx="110" cy="146" rx="62" ry="30"/>
+              <ellipse class="lampara__cara" cx="110" cy="148" rx="52" ry="21"/>
+              <circle class="lampara__punto" cx="82" cy="141" r="3.2"/><circle class="lampara__punto" cx="96" cy="141" r="3.2"/><circle class="lampara__punto" cx="110" cy="141" r="3.2"/><circle class="lampara__punto" cx="124" cy="141" r="3.2"/><circle class="lampara__punto" cx="138" cy="141" r="3.2"/><circle class="lampara__punto" cx="89" cy="151" r="3.2"/><circle class="lampara__punto" cx="103" cy="151" r="3.2"/><circle class="lampara__punto" cx="117" cy="151" r="3.2"/><circle class="lampara__punto" cx="131" cy="151" r="3.2"/>
+              <rect class="lampara__asa" x="104" y="136" width="12" height="24" rx="5"/>
+            </g>
+          </svg>
         </div>
-        <div class="punto punto--dcha" style="--x: 44.2%; --y: 77.2%">
+        <div class="punto punto--izq" data-doctor="joan" data-cara="18.6,24" style="--x: 25.9%; --y: 58.6%">
+          <button class="punto__boton" type="button" aria-expanded="false" aria-controls="punto-joan"><span class="punto__anillo" aria-hidden="true"></span><span class="sr">Quién es: Dr. Joan Morelló Cubells</span></button>
+          <div class="punto__ficha" id="punto-joan"><strong>Dr. Joan Morelló Cubells</strong><span>Fundador</span><em>Fundó la clínica en 1982</em></div>
+        </div>
+        <div class="punto punto--izq punto--dcha" data-doctor="carmen" data-cara="36.1,39" style="--x: 44.2%; --y: 77.2%">
           <button class="punto__boton" type="button" aria-expanded="false" aria-controls="punto-carmen"><span class="punto__anillo" aria-hidden="true"></span><span class="sr">Quién es: Dra. Carmen Morelló</span></button>
-          <div class="punto__ficha" id="punto-carmen" role="note"><strong>Dra. Carmen Morelló</strong><span>Núm. de colegiada 5392</span></div>
+          <div class="punto__ficha" id="punto-carmen"><strong>Dra. Carmen Morelló</strong><span>Periodoncia e implantología</span><em>Núm. de colegiada 5392</em></div>
         </div>
         <figcaption class="hero__pie">Doctores Morelló</figcaption>
       </figure>
       <div class="hero__texto">
-        <h1 id="h1" class="hero__titulo" data-alinear>Clínica Dental de referencia en Barcelona</h1>
+        <h1 id="h1" class="hero__titulo" data-palabras>Clínica Dental de referencia en Barcelona</h1>
         <p class="banda">Excelencia odontológica con un trato cercano</p>
         <p class="hero__desc">Morelló Clínica Dental, fundada en el año 1982 por el Dr. Joan Morelló Cubells.</p>
         <div class="hero__botones">
-          <a class="boton boton--grande" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pida una cita online">Pida una cita online</span></a>
-          <a class="boton boton--grande" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llame al 934 182 129">Llame al 934 182 129</span></a>
+          <a class="boton boton--grande boton--llamada" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pida una cita online">Pida una cita online</span></a>
+          <a class="boton boton--grande" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llame al 934 182 129">Llame al 934 182 129</span></a>
         </div>
       </div>
     </div>
@@ -214,22 +242,22 @@
     <div class="envoltura">
       <header class="cab-sec">
         <h2 id="t-especialistas">Somos Especialistas</h2>
-        <a class="boton" href="https://www.morelloclinicadental.com/tratamientos/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--diente" aria-hidden="true"><svg><use href="#i-diente"/></svg><svg><use href="#i-diente"/></svg></span><span class="boton__txt" data-t="Consulte todos los tratamientos que realizamos">Consulte todos los tratamientos que realizamos</span></a>
+        <a class="boton" href="https://www.morelloclinicadental.com/tratamientos/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--diente" aria-hidden="true"><svg><use href="#i-diente"/></svg><svg><use href="#i-diente"/></svg></span><span class="boton__txt" data-t="Consulte todos los tratamientos que realizamos">Consulte todos los tratamientos que realizamos</span></a>
       </header>
 
       <div class="odo" data-odo>
         <div class="odo__instrumento">
           <div class="odo__lista" role="group" aria-label="Elija un tratamiento">
-            <button class="opcion" type="button" data-t="ortodoncia" aria-pressed="false" aria-controls="panel-ortodoncia">Ortodoncia</button>
-            <button class="opcion" type="button" data-t="invisalign" aria-pressed="false" aria-controls="panel-invisalign">Ortodoncia invisible</button>
-            <button class="opcion" type="button" data-t="estetica" aria-pressed="false" aria-controls="panel-estetica">Estética dental</button>
-            <button class="opcion" type="button" data-t="odontopediatria" aria-pressed="false" aria-controls="panel-odontopediatria">Odontopediatría</button>
-            <button class="opcion" type="button" data-t="blanqueamiento" aria-pressed="false" aria-controls="panel-blanqueamiento">Blanqueamiento</button>
-            <button class="opcion" type="button" data-t="implantes" aria-pressed="false" aria-controls="panel-implantes">Implantes dentales</button>
-            <button class="opcion" type="button" data-t="protesis" aria-pressed="false" aria-controls="panel-protesis">Prótesis dental</button>
-            <button class="opcion" type="button" data-t="periodoncia" aria-pressed="false" aria-controls="panel-periodoncia">Periodoncia</button>
-            <button class="opcion" type="button" data-t="endodoncia" aria-pressed="false" aria-controls="panel-endodoncia">Endodoncia</button>
-            <button class="opcion" type="button" data-t="conservadora" aria-pressed="false" aria-controls="panel-conservadora">Odontología conservadora</button>
+            <button class="opcion" type="button" data-t="ortodoncia" aria-pressed="false" aria-controls="panel-ortodoncia"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 9h10v13c0 5-2.2 9-5 9s-5-4-5-9Z"/><path d="M21 9h10v13c0 5-2.2 9-5 9s-5-4-5-9Z"/><path class="pi pi-alambre" d="M5 18.5h30"/><rect class="pi pi-b" x="11.5" y="16" width="5" height="5" rx="1.2"/><rect class="pi pi-b pi-b2" x="23.5" y="16" width="5" height="5" rx="1.2"/></svg></span><span class="opcion__nombre">Ortodoncia</span></button>
+            <button class="opcion" type="button" data-t="invisalign" aria-pressed="false" aria-controls="panel-invisalign"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 9h10v13c0 5-2.2 9-5 9s-5-4-5-9Z"/><path d="M21 9h10v13c0 5-2.2 9-5 9s-5-4-5-9Z"/><path class="pi pi-ferula" d="M6.5 7h27v15.5c0 6-2.8 10-6.5 10-2.2 0-3.6-2-7-2s-4.8 2-7 2c-3.7 0-6.5-4-6.5-10Z"/></svg></span><span class="opcion__nombre">Ortodoncia invisible</span></button>
+            <button class="opcion" type="button" data-t="estetica" aria-pressed="false" aria-controls="panel-estetica"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M13 8h12c1.6 0 2.5 1 2.5 2.6V21c0 6.5-3.6 11-8.5 11s-8.5-4.5-8.5-11V10.6C10.5 9 11.4 8 13 8Z"/><path class="pi pi-chispa" d="M31 3.5c.5 2.6 1.6 3.7 4.2 4.2-2.6.5-3.7 1.6-4.2 4.2-.5-2.6-1.6-3.7-4.2-4.2 2.6-.5 3.7-1.6 4.2-4.2Z"/></svg></span><span class="opcion__nombre">Estética dental</span></button>
+            <button class="opcion" type="button" data-t="odontopediatria" aria-pressed="false" aria-controls="panel-odontopediatria"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z" transform="translate(-4 -2) scale(.86)"/><g class="pi pi-peque"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z" transform="translate(21 19) scale(.46)"/></g></svg></span><span class="opcion__nombre">Odontopediatría</span></button>
+            <button class="opcion" type="button" data-t="blanqueamiento" aria-pressed="false" aria-controls="panel-blanqueamiento"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z"/><path class="pi pi-brillo" d="M14 12.5l3-3M15.5 16l5-5"/></svg></span><span class="opcion__nombre">Blanqueamiento</span></button>
+            <button class="opcion" type="button" data-t="implantes" aria-pressed="false" aria-controls="panel-implantes"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path class="pi-corona" d="M11.5 5h17c1.6 0 2.6 1 2.6 2.6v3.6c0 3.4-2.4 5.8-5.8 5.8H14.7c-3.4 0-5.8-2.4-5.8-5.8V7.6C8.9 6 9.9 5 11.5 5Z"/><path d="M17 17v3h6v-3"/><g class="pi pi-tornillo"><path d="M15.5 20h9l-1.2 11.5c-.3 2.4-1.6 3.5-3.3 3.5s-3-1.1-3.3-3.5Z"/><path d="M15.8 23.5l8.4-1.5M16.1 27l7.8-1.5M16.5 30.5l7-1.3"/></g></svg></span><span class="opcion__nombre">Implantes dentales</span></button>
+            <button class="opcion" type="button" data-t="protesis" aria-pressed="false" aria-controls="panel-protesis"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M4.5 10h8.5v11c0 4-1.9 7-4.25 7S4.5 25 4.5 21Z"/><path class="pi pi-pontico" d="M15.75 10h8.5v11c0 4-1.9 7-4.25 7s-4.25-3-4.25-7Z"/><path d="M27 10h8.5v11c0 4-1.9 7-4.25 7S27 25 27 21Z"/><path class="pi pi-puente" d="M9 17h22"/></svg></span><span class="opcion__nombre">Prótesis dental</span></button>
+            <button class="opcion" type="button" data-t="periodoncia" aria-pressed="false" aria-controls="panel-periodoncia"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z"/><path class="pi pi-encia" d="M4.5 19.5c5.2-3.6 10-3.6 15.5 0s10.3 3.6 15.5 0"/></svg></span><span class="opcion__nombre">Periodoncia</span></button>
+            <button class="opcion" type="button" data-t="endodoncia" aria-pressed="false" aria-controls="panel-endodoncia"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z"/><g class="pi pi-canal"><path d="M17 13.5v14.5M23 13.5v14.5"/></g></svg></span><span class="opcion__nombre">Endodoncia</span></button>
+            <button class="opcion" type="button" data-t="conservadora" aria-pressed="false" aria-controls="panel-conservadora"><span class="opcion__ico" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M11 8.5c2.5-1.8 5-1.2 7 0 1.4.8 2.6.8 4 0 2-1.2 4.5-1.8 7 0 3 2.2 3 6.8 1.4 11-1.2 3.2-1.3 6.6-2.4 10.6-.7 2.6-2.8 2.7-3.5.1-.9-3.3-1.2-6.4-4.5-6.4s-3.6 3.1-4.5 6.4c-.7 2.6-2.8 2.5-3.5-.1-1.1-4-1.2-7.4-2.4-10.6C8 15.3 8 10.7 11 8.5Z"/><circle class="pi pi-empaste" cx="20" cy="14.5" r="3.6"/></svg></span><span class="opcion__nombre">Odontología conservadora</span></button>
           </div>
           <div class="odo__lienzo">
             <!-- odontograma:inicio -->
@@ -269,132 +297,132 @@
           </article>
 
           <article class="panel" data-panel="ortodoncia" id="panel-ortodoncia" aria-labelledby="pt-ortodoncia">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/ortodoncia-caso-1000.webp" srcset="assets/img/ortodoncia-caso-600.webp 600w, assets/img/ortodoncia-caso-1000.webp 1000w, assets/img/ortodoncia-caso-1500.webp 1500w" sizes="(min-width: 1000px) 560px, 92vw" width="1500" height="787" alt="Antes y después de un tratamiento de ortodoncia en Morelló Clínica Dental"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/ortodoncia-caso-1000.webp" srcset="assets/img/ortodoncia-caso-600.webp 600w, assets/img/ortodoncia-caso-1000.webp 1000w, assets/img/ortodoncia-caso-1500.webp 1500w" sizes="(min-width: 1000px) 560px, 92vw" width="1500" height="787" alt="Antes y después de un tratamiento de ortodoncia en Morelló Clínica Dental"></figure>
             <div class="panel__texto">
               <h2 class="panel__titulo" id="pt-ortodoncia">Ortodoncia</h2>
               <p>En Morelló contamos con los tratamientos de ortodoncia más demandados y con mejores resultados. Ortodoncia lingual, brackets estéticos, cerámicos y ortodoncia invisible Invisalign®.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Realizamos un diagnóstico en la primera visita</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Ortodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de ortodoncia">Pedir cita de ortodoncia</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Ortodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de ortodoncia">Pedir cita de ortodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia/">Ver más<span class="sr"> sobre la ortodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="invisalign" id="panel-invisalign" aria-labelledby="pt-invisalign">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/ortodoncia-invisible-906.webp" srcset="assets/img/ortodoncia-invisible-600.webp 600w, assets/img/ortodoncia-invisible-906.webp 906w" sizes="(min-width: 1000px) 560px, 92vw" width="906" height="559" alt="Ortodoncia invisible Invisalign frente a los brackets"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/ortodoncia-invisible-906.webp" srcset="assets/img/ortodoncia-invisible-600.webp 600w, assets/img/ortodoncia-invisible-906.webp 906w" sizes="(min-width: 1000px) 560px, 92vw" width="906" height="559" alt="Ortodoncia invisible Invisalign frente a los brackets"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-invisalign">Ortodoncia invisible</h3>
               <p class="banda banda--peq">La clara alternativa a los brackets</p>
               <p>El tratamiento Invisalign® es un sistema innovador de ortodoncia que se caracteriza por ser prácticamente invisible. Se basa en alineadores, férulas transparentes que se fabrican de manera personalizada para que tus dientes se muevan poco a poco.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Cada alineador se lleva aproximadamente 1 semana</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Ortodoncia invisible"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de Invisalign">Pedir cita de Invisalign</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Ortodoncia invisible"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de Invisalign">Pedir cita de Invisalign</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Más información<span class="sr"> sobre la ortodoncia invisible</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="estetica" id="panel-estetica" aria-labelledby="pt-estetica">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/estetica-dental-1080.webp" srcset="assets/img/estetica-dental-600.webp 600w, assets/img/estetica-dental-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Sonrisa natural tras un tratamiento de estética dental"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/estetica-dental-1080.webp" srcset="assets/img/estetica-dental-600.webp 600w, assets/img/estetica-dental-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Sonrisa natural tras un tratamiento de estética dental"></figure>
             <div class="panel__texto">
               <h2 class="panel__titulo" id="pt-estetica">Estética dental</h2>
               <p>La solución a problemas relacionados con la salud bucal y la armonía estética de la boca en su totalidad. La importancia de lucir una bonita sonrisa natural.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Carillas de composite, de porcelana y microcarillas sin tallado</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Estética dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de estética dental">Pedir cita de estética dental</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Estética dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de estética dental">Pedir cita de estética dental</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/estetica-dental/">Ver más<span class="sr"> sobre la estética dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="odontopediatria" id="panel-odontopediatria" aria-labelledby="pt-odontopediatria">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/odontopediatria-1080.webp" srcset="assets/img/odontopediatria-600.webp 600w, assets/img/odontopediatria-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Niña sonriendo en el sillón durante una revisión de odontopediatría"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/odontopediatria-1080.webp" srcset="assets/img/odontopediatria-600.webp 600w, assets/img/odontopediatria-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Niña sonriendo en el sillón durante una revisión de odontopediatría"></figure>
             <div class="panel__texto">
               <h2 class="panel__titulo" id="pt-odontopediatria">Odontopediatría</h2>
               <p class="banda banda--peq">El cuidado de hoy, la sonrisa de mañana</p>
               <p>La odontopediatría, también llamada odontología infantil, es la encargada de tratar los dientes de los niños, desde los primeros dientes temporales hasta que finaliza el periodo de recambio dental.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Primera revisión: entre los 12 y 18 meses de edad</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Odontopediatría"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita para mi hijo">Pedir cita para mi hijo</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Odontopediatría"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita para mi hijo">Pedir cita para mi hijo</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Más información<span class="sr"> sobre la odontopediatría</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="blanqueamiento" id="panel-blanqueamiento" aria-labelledby="pt-blanqueamiento">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/blanqueamiento-800.webp" srcset="assets/img/blanqueamiento-600.webp 600w, assets/img/blanqueamiento-800.webp 800w" sizes="(min-width: 1000px) 560px, 92vw" width="800" height="533" alt="Férula y gel de blanqueamiento dental para usar en casa"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/blanqueamiento-800.webp" srcset="assets/img/blanqueamiento-600.webp 600w, assets/img/blanqueamiento-800.webp 800w" sizes="(min-width: 1000px) 560px, 92vw" width="800" height="533" alt="Férula y gel de blanqueamiento dental para usar en casa"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-blanqueamiento">Blanqueamiento dental</h3>
               <p>El blanqueamiento dental es la técnica que se utiliza para conseguir blanquear entre uno y dos tonos los dientes. El que utilizamos en Morelló Clínica Dental es ambulatorio, es decir, que se realiza en casa.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Unos 10 días de tratamiento en casa</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Blanqueamiento dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de blanqueamiento">Pedir cita de blanqueamiento</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Blanqueamiento dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de blanqueamiento">Pedir cita de blanqueamiento</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/blanqueamiento-dental-barcelona/">Ver más<span class="sr"> sobre el blanqueamiento dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="implantes" id="panel-implantes" aria-labelledby="pt-implantes">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/implantes-1080.webp" srcset="assets/img/implantes-600.webp 600w, assets/img/implantes-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Ilustración de un implante dental entre dos dientes"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/implantes-1080.webp" srcset="assets/img/implantes-600.webp 600w, assets/img/implantes-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Ilustración de un implante dental entre dos dientes"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-implantes">Implantes dentales</h3>
               <p>Contamos con más de 20 años de experiencia en la colocación de implantes dentales con resultados muy satisfactorios. El implante dental es un tornillo de titanio (material biocompatible) que se osteointegra en nuestro hueso.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Podemos sustituir un solo diente, algunos de ellos o todos</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Implantes dentales"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de implantes">Pedir cita de implantes</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Implantes dentales"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de implantes">Pedir cita de implantes</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/implantes-dentales/">Ver más<span class="sr"> sobre los implantes dentales</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="protesis" id="panel-protesis" aria-labelledby="pt-protesis">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/protesis-920.webp" srcset="assets/img/protesis-600.webp 600w, assets/img/protesis-920.webp 920w" sizes="(min-width: 1000px) 560px, 92vw" width="920" height="409" alt="Pareja de adultos sonriendo"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/protesis-920.webp" srcset="assets/img/protesis-600.webp 600w, assets/img/protesis-920.webp 920w" sizes="(min-width: 1000px) 560px, 92vw" width="920" height="409" alt="Pareja de adultos sonriendo"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-protesis">Prótesis dental</h3>
               <p>La prótesis dental sustituye las estructuras dentales perdidas o deterioradas, devolviendo al aparato masticatorio su funcionalidad y estética. Cada prótesis es única y personalizada para cada caso y paciente.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Fija, removible, sobre implantes y estética</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Prótesis dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de prótesis">Pedir cita de prótesis</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Prótesis dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de prótesis">Pedir cita de prótesis</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/protesis-dental/">Ver más<span class="sr"> sobre la prótesis dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="periodoncia" id="panel-periodoncia" aria-labelledby="pt-periodoncia">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/periodoncia-1080.webp" srcset="assets/img/periodoncia-600.webp 600w, assets/img/periodoncia-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Revisión de las encías con espejo y sonda periodontal"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/periodoncia-1080.webp" srcset="assets/img/periodoncia-600.webp 600w, assets/img/periodoncia-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Revisión de las encías con espejo y sonda periodontal"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-periodoncia">Periodoncia</h3>
               <p>La Periodoncia es la especialidad que estudia la prevención y el tratamiento de las encías y sus tejidos. El objetivo del tratamiento es eliminar la infección que origina la enfermedad mediante la eliminación de la placa bacteriana y del sarro.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>El mejor tratamiento es la prevención</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Periodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de periodoncia">Pedir cita de periodoncia</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Periodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de periodoncia">Pedir cita de periodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/periodoncia/">Ver más<span class="sr"> sobre la periodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="endodoncia" id="panel-endodoncia" aria-labelledby="pt-endodoncia">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/endodoncia-1000.webp" srcset="assets/img/endodoncia-600.webp 600w, assets/img/endodoncia-1000.webp 1000w" sizes="(min-width: 1000px) 560px, 92vw" width="1000" height="626" alt="Sonrisa sana después de conservar los dientes"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/endodoncia-1000.webp" srcset="assets/img/endodoncia-600.webp 600w, assets/img/endodoncia-1000.webp 1000w" sizes="(min-width: 1000px) 560px, 92vw" width="1000" height="626" alt="Sonrisa sana después de conservar los dientes"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-endodoncia">Endodoncia</h3>
               <p>La endodoncia estudia la técnica y tratamiento de los conductos radiculares por donde pasan los nervios dentarios. Con la endodoncia podemos recuperar dientes dañados y devolverles su función y, de este modo, evitar la extracción.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Trabajamos con el sistema RECIPROC® GOLD</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Endodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de endodoncia">Pedir cita de endodoncia</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Endodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de endodoncia">Pedir cita de endodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/endodoncia/">Ver más<span class="sr"> sobre la endodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
           </article>
 
           <article class="panel" data-panel="conservadora" id="panel-conservadora" aria-labelledby="pt-conservadora">
-            <figure class="panel__foto"><img data-foto loading="lazy" src="assets/img/conservadora-1080.webp" srcset="assets/img/conservadora-600.webp 600w, assets/img/conservadora-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Paciente sonriendo durante una revisión dental"></figure>
+            <figure class="panel__foto"><span class="panel__arco" aria-hidden="true"></span><img data-foto loading="lazy" src="assets/img/conservadora-1080.webp" srcset="assets/img/conservadora-600.webp 600w, assets/img/conservadora-1080.webp 1080w" sizes="(min-width: 1000px) 560px, 92vw" width="1080" height="541" alt="Paciente sonriendo durante una revisión dental"></figure>
             <div class="panel__texto">
               <h3 class="panel__titulo" id="pt-conservadora">Odontología conservadora</h3>
               <p>La odontología conservadora, como su nombre indica, es la técnica que se implementa para conservar una pieza dental. Los tratamientos que se aplican intentan ser lo menos invasivos posible para lograr mantener la mayor parte de la estructura del diente.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Obturaciones con resinas compuestas, altamente biocompatibles</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Odontología conservadora"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
+                <a class="boton" href="#cita" data-tratamiento="Odontología conservadora"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontologia-conservadora/">Ver más<span class="sr"> sobre la odontología conservadora</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -413,13 +441,13 @@
         <p>Su tratamiento será realizado por nuestro equipo de especialistas. ¡Pida una cita previa ahora!</p>
       </div>
       <div class="consulta__botones">
-        <a class="boton boton--claro boton--grande" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Contacte hoy mismo">Contacte hoy mismo</span></a>
-        <a class="boton boton--claro boton--grande" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llame al 934 182 129">Llame al 934 182 129</span></a>
+        <a class="boton boton--claro boton--grande" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Contacte hoy mismo">Contacte hoy mismo</span></a>
+        <a class="boton boton--claro boton--grande" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llame al 934 182 129">Llame al 934 182 129</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ NUESTRO EQUIPO ============ -->
+  <!-- ============ NUESTRO EQUIPO: la fila del equipo y dónde se formó ============ -->
   <section class="sec equipo" id="equipo" aria-labelledby="t-equipo">
     <div class="envoltura">
       <div class="equipo__cab">
@@ -431,48 +459,58 @@
           <p class="banda">Conocimientos, experiencia, cercanía</p>
           <p>Gracias a la alta capacitación de nuestros Doctores, en Morelló Clínica Dental ofrecemos los mejores tratamientos para su cuidado buco-dental.</p>
           <p class="equipo__sub">Profesionales con alta capacitación y proximidad.</p>
-          <a class="boton" href="https://www.morelloclinicadental.com/equipo/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--equipo" aria-hidden="true"><svg><use href="#i-equipo"/></svg><svg><use href="#i-equipo"/></svg></span><span class="boton__txt" data-t="Entre a conocernos">Entre a conocernos</span></a>
+          <a class="boton" href="https://www.morelloclinicadental.com/equipo/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--equipo" aria-hidden="true"><svg><use href="#i-equipo"/></svg><svg><use href="#i-equipo"/></svg></span><span class="boton__txt" data-t="Entre a conocernos">Entre a conocernos</span></a>
         </div>
       </div>
-
-      <ul class="doctores">
-        <li class="doctor">
-          <figure class="doctor__foto"><img data-foto loading="lazy" src="assets/img/dr-joan-morello-360.webp" srcset="assets/img/dr-joan-morello-360.webp 360w, assets/img/dr-joan-morello-783.webp 783w" sizes="(min-width: 1100px) 220px, (min-width: 700px) 30vw, 44vw" width="783" height="765" alt="Retrato del Dr. Joan Morelló Cubells"><span class="doctor__arco" aria-hidden="true"></span></figure>
-          <h3>Dr. Joan Morelló</h3>
-          <p class="doctor__rol">Fundador</p>
-          <button class="doctor__mas" type="button" data-ficha="ficha-joan">Formación</button>
-          <div class="doctor__ficha" id="ficha-joan" hidden><p>Fundó Morelló Clínica Dental en el año 1982 en la calle Muntaner 571 de Barcelona.</p></div>
-        </li>
-        <li class="doctor">
-          <figure class="doctor__foto"><img data-foto loading="lazy" src="assets/img/dra-carmen-morello-360.webp" srcset="assets/img/dra-carmen-morello-360.webp 360w, assets/img/dra-carmen-morello-700.webp 700w" sizes="(min-width: 1100px) 220px, (min-width: 700px) 30vw, 44vw" width="700" height="684" alt="Retrato de la Dra. Carmen Morelló"><span class="doctor__arco" aria-hidden="true"></span></figure>
-          <h3>Dra. Carmen Morelló</h3>
-          <p class="doctor__rol">Periodoncia, cirugía e implantología</p>
-          <button class="doctor__mas" type="button" data-ficha="ficha-carmen">Formación</button>
-          <div class="doctor__ficha" id="ficha-carmen" hidden><p>Núm. de colegiada 5392.</p><ul><li>Licenciada en Odontología por la Universitat Internacional de Catalunya.</li><li>Postgrado en Periodoncia por la Acadèmia de Ciències Mèdiques de Catalunya i Balears (SCOEC).</li><li>Postgrado en Técnicas de Cirugía por la Universitat Internacional de Catalunya (UIC).</li><li>Postgrado en Implantología por la Universitat Internacional de Catalunya (UIC).</li></ul></div>
-        </li>
-        <li class="doctor">
-          <figure class="doctor__foto"><img data-foto loading="lazy" src="assets/img/dra-maria-nart-360.webp" srcset="assets/img/dra-maria-nart-360.webp 360w, assets/img/dra-maria-nart-700.webp 700w" sizes="(min-width: 1100px) 220px, (min-width: 700px) 30vw, 44vw" width="700" height="684" alt="Retrato de la Dra. María Nart"><span class="doctor__arco" aria-hidden="true"></span></figure>
-          <h3>Dra. María Nart</h3>
-          <p class="doctor__rol">Ortodoncia y ortopedia dentofacial</p>
-          <button class="doctor__mas" type="button" data-ficha="ficha-nart">Formación</button>
-          <div class="doctor__ficha" id="ficha-nart" hidden><p>Núm. de colegiada 7186.</p><ul><li>Licenciada en Odontología, Universitat Internacional de Catalunya (UIC).</li><li>Especialista en ortodoncia y ortopedia dentofacial, University of Washington, Seattle, USA.</li><li>Master of Science in Dentistry, MSD, University of Washington, Seattle, USA.</li><li>Diplomate American Board of Orthodontics.</li><li>Profesora asociada en el Departamento de Ortodoncia, Universitat Internacional de Catalunya (UIC).</li><li>Publicaciones nacionales e internacionales. Conferenciante nacional e internacional.</li><li>Miembro de la Sociedad Española de Ortodoncia (SEDO), de la American Association of Orthodontists (AAO) y de la World Federation of Orthodontists (WFO).</li></ul></div>
-        </li>
-        <li class="doctor">
-          <figure class="doctor__foto"><img data-foto loading="lazy" src="assets/img/dra-maria-estivalez-360.webp" srcset="assets/img/dra-maria-estivalez-360.webp 360w, assets/img/dra-maria-estivalez-700.webp 700w" sizes="(min-width: 1100px) 220px, (min-width: 700px) 30vw, 44vw" width="700" height="684" alt="Retrato de la Dra. María Estívalez"><span class="doctor__arco" aria-hidden="true"></span></figure>
-          <h3>Dra. María Estívalez</h3>
-          <p class="doctor__rol">Prótesis e implantoprótesis</p>
-          <button class="doctor__mas" type="button" data-ficha="ficha-estivalez">Formación</button>
-          <div class="doctor__ficha" id="ficha-estivalez" hidden><p>Núm. de colegiada 5374.</p><ul><li>Licenciada por la Universitat Internacional de Catalunya.</li><li>2012: Máster en Prótesis e Implanto-prótesis Oral Avanzada por la Universidad Europea de Madrid.</li><li>2013: Doctorado en Odontología por la Universidad Europea de Madrid.</li><li>2012-2013: Profesora en el Máster de Prótesis Implanto-prótesis Oral y Estética Dental en la Universidad Europea de Madrid.</li><li>Desde 2014: Instructora en las prácticas clínicas del Máster en Rehabilitación Oral en la Universitat Internacional de Catalunya.</li><li>Desde 2014: Instructora en las prácticas de laboratorio en la asignatura de Estética Dental en la Universitat Internacional de Catalunya.</li></ul></div>
-        </li>
-        <li class="doctor">
-          <figure class="doctor__foto"><img data-foto loading="lazy" src="assets/img/dra-carla-mozas-360.webp" srcset="assets/img/dra-carla-mozas-360.webp 360w, assets/img/dra-carla-mozas-700.webp 700w" sizes="(min-width: 1100px) 220px, (min-width: 700px) 30vw, 44vw" width="700" height="684" alt="Retrato de la Dra. Carla Mozas"><span class="doctor__arco" aria-hidden="true"></span></figure>
-          <h3>Dra. Carla Mozas</h3>
-          <p class="doctor__rol">Periodoncia, implantes y estética</p>
-          <button class="doctor__mas" type="button" data-ficha="ficha-mozas">Formación</button>
-          <div class="doctor__ficha" id="ficha-mozas" hidden><p>Núm. de colegiada 01000355.</p><ul><li>2019-2020: Máster en Rehabilitación y Estética dental avanzada, UIC.</li><li>2016-2019: Máster en Periodoncia e Implantes, acreditado por la Federación Europea de Periodoncia (EFP).</li><li>2015-2016: Postgrado en Prótesis y Oclusión, SCOE (Dr. Mallat).</li><li>2010-2015: Grado en Odontología, Universidad Internacional de Cataluña.</li></ul></div>
-        </li>
-      </ul>
-
+    </div>
+    <div class="red" data-red>
+      <div class="envoltura red__dentro">
+        <ul class="red__nodos" aria-label="Dónde se ha formado el equipo">
+          <li class="nodo" data-de="joan" style="--n:0"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Morelló Clínica Dental, 1982</span></li>
+          <li class="nodo" data-de="carmen nart estivalez mozas" style="--n:1"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Universitat Internacional de Catalunya</span></li>
+          <li class="nodo" data-de="nart" style="--n:2"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">University of Washington, Seattle</span></li>
+          <li class="nodo" data-de="nart" style="--n:3"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Diplomate American Board of Orthodontics</span></li>
+          <li class="nodo" data-de="nart" style="--n:4"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Sociedad Española de Ortodoncia</span></li>
+          <li class="nodo" data-de="estivalez" style="--n:5"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Universidad Europea de Madrid</span></li>
+          <li class="nodo" data-de="mozas" style="--n:6"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Federación Europea de Periodoncia</span></li>
+          <li class="nodo" data-de="carmen" style="--n:7"><span class="nodo__punto" aria-hidden="true"></span><span class="nodo__txt">Acadèmia de Ciències Mèdiques de Catalunya i Balears</span></li>
+        </ul>
+        <svg class="red__lineas" aria-hidden="true" focusable="false"></svg>
+        <ul class="retratos" data-carril>
+          <li class="retrato" data-doctor="joan" style="--n:0">
+            <button class="retrato__foto" type="button" data-ficha="ficha-joan" aria-label="Formación: Dr. Joan Morelló"><img data-foto loading="lazy" src="assets/img/dr-joan-morello-360.webp" srcset="assets/img/dr-joan-morello-360.webp 360w, assets/img/dr-joan-morello-783.webp 783w" sizes="(min-width: 1100px) 248px, (min-width: 700px) 30vw, 46vw" width="783" height="765" alt="Retrato del Dr. Joan Morelló Cubells"><span class="retrato__mas" aria-hidden="true"><svg class="ico"><use href="#i-mas"/></svg>Formación</span></button>
+            <h3>Dr. Joan Morelló</h3>
+            <p class="retrato__rol">Fundador</p>
+            <div class="doctor__ficha" id="ficha-joan" hidden><p>Fundó Morelló Clínica Dental en el año 1982 en la calle Muntaner 571 de Barcelona.</p></div>
+          </li>
+          <li class="retrato" data-doctor="carmen" style="--n:1">
+            <button class="retrato__foto" type="button" data-ficha="ficha-carmen" aria-label="Formación: Dra. Carmen Morelló"><img data-foto loading="lazy" src="assets/img/dra-carmen-morello-360.webp" srcset="assets/img/dra-carmen-morello-360.webp 360w, assets/img/dra-carmen-morello-700.webp 700w" sizes="(min-width: 1100px) 248px, (min-width: 700px) 30vw, 46vw" width="700" height="684" alt="Retrato de la Dra. Carmen Morelló"><span class="retrato__mas" aria-hidden="true"><svg class="ico"><use href="#i-mas"/></svg>Formación</span></button>
+            <h3>Dra. Carmen Morelló</h3>
+            <p class="retrato__rol">Periodoncia, cirugía e implantología</p>
+            <div class="doctor__ficha" id="ficha-carmen" hidden><p>Núm. de colegiada 5392.</p><ul><li>Licenciada en Odontología por la Universitat Internacional de Catalunya.</li><li>Postgrado en Periodoncia por la Acadèmia de Ciències Mèdiques de Catalunya i Balears (SCOEC).</li><li>Postgrado en Técnicas de Cirugía por la Universitat Internacional de Catalunya (UIC).</li><li>Postgrado en Implantología por la Universitat Internacional de Catalunya (UIC).</li></ul></div>
+          </li>
+          <li class="retrato" data-doctor="nart" style="--n:2">
+            <button class="retrato__foto" type="button" data-ficha="ficha-nart" aria-label="Formación: Dra. María Nart"><img data-foto loading="lazy" src="assets/img/dra-maria-nart-360.webp" srcset="assets/img/dra-maria-nart-360.webp 360w, assets/img/dra-maria-nart-700.webp 700w" sizes="(min-width: 1100px) 248px, (min-width: 700px) 30vw, 46vw" width="700" height="684" alt="Retrato de la Dra. María Nart"><span class="retrato__mas" aria-hidden="true"><svg class="ico"><use href="#i-mas"/></svg>Formación</span></button>
+            <h3>Dra. María Nart</h3>
+            <p class="retrato__rol">Ortodoncia y ortopedia dentofacial</p>
+            <div class="doctor__ficha" id="ficha-nart" hidden><p>Núm. de colegiada 7186.</p><ul><li>Licenciada en Odontología, Universitat Internacional de Catalunya (UIC).</li><li>Especialista en ortodoncia y ortopedia dentofacial, University of Washington, Seattle, USA.</li><li>Master of Science in Dentistry, MSD, University of Washington, Seattle, USA.</li><li>Diplomate American Board of Orthodontics.</li><li>Profesora asociada en el Departamento de Ortodoncia, Universitat Internacional de Catalunya (UIC).</li><li>Publicaciones nacionales e internacionales. Conferenciante nacional e internacional.</li><li>Miembro de la Sociedad Española de Ortodoncia (SEDO), de la American Association of Orthodontists (AAO) y de la World Federation of Orthodontists (WFO).</li></ul></div>
+          </li>
+          <li class="retrato" data-doctor="estivalez" style="--n:3">
+            <button class="retrato__foto" type="button" data-ficha="ficha-estivalez" aria-label="Formación: Dra. María Estívalez"><img data-foto loading="lazy" src="assets/img/dra-maria-estivalez-360.webp" srcset="assets/img/dra-maria-estivalez-360.webp 360w, assets/img/dra-maria-estivalez-700.webp 700w" sizes="(min-width: 1100px) 248px, (min-width: 700px) 30vw, 46vw" width="700" height="684" alt="Retrato de la Dra. María Estívalez"><span class="retrato__mas" aria-hidden="true"><svg class="ico"><use href="#i-mas"/></svg>Formación</span></button>
+            <h3>Dra. María Estívalez</h3>
+            <p class="retrato__rol">Prótesis e implantoprótesis</p>
+            <div class="doctor__ficha" id="ficha-estivalez" hidden><p>Núm. de colegiada 5374.</p><ul><li>Licenciada por la Universitat Internacional de Catalunya.</li><li>2012: Máster en Prótesis e Implanto-prótesis Oral Avanzada por la Universidad Europea de Madrid.</li><li>2013: Doctorado en Odontología por la Universidad Europea de Madrid.</li><li>2012-2013: Profesora en el Máster de Prótesis Implanto-prótesis Oral y Estética Dental en la Universidad Europea de Madrid.</li><li>Desde 2014: Instructora en las prácticas clínicas del Máster en Rehabilitación Oral en la Universitat Internacional de Catalunya.</li><li>Desde 2014: Instructora en las prácticas de laboratorio en la asignatura de Estética Dental en la Universitat Internacional de Catalunya.</li></ul></div>
+          </li>
+          <li class="retrato" data-doctor="mozas" style="--n:4">
+            <button class="retrato__foto" type="button" data-ficha="ficha-mozas" aria-label="Formación: Dra. Carla Mozas"><img data-foto loading="lazy" src="assets/img/dra-carla-mozas-360.webp" srcset="assets/img/dra-carla-mozas-360.webp 360w, assets/img/dra-carla-mozas-700.webp 700w" sizes="(min-width: 1100px) 248px, (min-width: 700px) 30vw, 46vw" width="700" height="684" alt="Retrato de la Dra. Carla Mozas"><span class="retrato__mas" aria-hidden="true"><svg class="ico"><use href="#i-mas"/></svg>Formación</span></button>
+            <h3>Dra. Carla Mozas</h3>
+            <p class="retrato__rol">Periodoncia, implantes y estética</p>
+            <div class="doctor__ficha" id="ficha-mozas" hidden><p>Núm. de colegiada 01000355.</p><ul><li>2019-2020: Máster en Rehabilitación y Estética dental avanzada, UIC.</li><li>2016-2019: Máster en Periodoncia e Implantes, acreditado por la Federación Europea de Periodoncia (EFP).</li><li>2015-2016: Postgrado en Prótesis y Oclusión, SCOE (Dr. Mallat).</li><li>2010-2015: Grado en Odontología, Universidad Internacional de Cataluña.</li></ul></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="envoltura">
       <div class="higienistas">
         <div class="higienistas__fotos">
           <figure><img data-foto loading="lazy" src="assets/img/higienista-gemma-240.webp" srcset="assets/img/higienista-gemma-240.webp 240w, assets/img/higienista-gemma-700.webp 700w" sizes="120px" width="700" height="684" alt="Retrato de Gemma, higienista de la clínica"><figcaption>Gemma</figcaption></figure>
@@ -484,22 +522,9 @@
         </div>
       </div>
     </div>
-
-    <div class="credenciales" aria-label="Formación y sociedades del equipo">
-      <ul class="credenciales__pista">
-        <li>Diplomate American Board of Orthodontics</li>
-        <li>University of Washington, Seattle</li>
-        <li>Universitat Internacional de Catalunya</li>
-        <li>Federación Europea de Periodoncia</li>
-        <li>Sociedad Española de Ortodoncia</li>
-        <li>Universidad Europea de Madrid</li>
-        <li>Acadèmia de Ciències Mèdiques de Catalunya i Balears</li>
-        <li>World Federation of Orthodontists</li>
-      </ul>
-    </div>
   </section>
 
-  <!-- ============ LA CLÍNICA ============ -->
+  <!-- ============ LA CLÍNICA: se abre la puerta ============ -->
   <section class="sec sec--papel clinica" id="clinica" aria-labelledby="t-clinica">
     <div class="envoltura">
       <header class="cab-sec cab-sec--texto">
@@ -510,24 +535,43 @@
         </div>
       </header>
 
-      <ul class="mosaico" data-mosaico>
-        <li><button class="foto-clinica" type="button" data-grande="assets/img/clinica-logo-2400.webp" data-i="0">
-          <img data-foto loading="lazy" src="assets/img/clinica-logo-1200.webp" srcset="assets/img/clinica-logo-800.webp 800w, assets/img/clinica-logo-1200.webp 1200w" sizes="(min-width: 1000px) 600px, 92vw" width="4104" height="2736" alt="Morelló Clínica Dental en Barcelona, Sarrià-Sant Gervasi: el logotipo en la entrada">
-          <span class="foto-clinica__pie">Recepción</span></button></li>
-        <li><button class="foto-clinica" type="button" data-grande="assets/img/clinica-sala-espera-2400.webp" data-i="1">
-          <img data-foto loading="lazy" src="assets/img/clinica-sala-espera-1200.webp" srcset="assets/img/clinica-sala-espera-800.webp 800w, assets/img/clinica-sala-espera-1200.webp 1200w" sizes="(min-width: 1000px) 600px, 92vw" width="4104" height="2736" alt="Sala de espera de Morelló Clínica Dental">
-          <span class="foto-clinica__pie">Sala de espera</span></button></li>
-        <li><button class="foto-clinica" type="button" data-grande="assets/img/clinica-sala-infantil-2400.webp" data-i="2">
-          <img data-foto loading="lazy" src="assets/img/clinica-sala-infantil-1200.webp" srcset="assets/img/clinica-sala-infantil-800.webp 800w, assets/img/clinica-sala-infantil-1200.webp 1200w" sizes="(min-width: 1000px) 600px, 92vw" width="4104" height="2736" alt="Sala de espera infantil de Morelló Clínica Dental">
-          <span class="foto-clinica__pie">Sala de espera infantil</span></button></li>
-        <li><button class="foto-clinica" type="button" data-grande="assets/img/clinica-gabinete-2400.webp" data-i="3">
-          <img data-foto loading="lazy" src="assets/img/clinica-gabinete-1200.webp" srcset="assets/img/clinica-gabinete-800.webp 800w, assets/img/clinica-gabinete-1200.webp 1200w" sizes="(min-width: 1000px) 600px, 92vw" width="2699" height="1799" alt="Box principal de Morelló Clínica Dental">
-          <span class="foto-clinica__pie">Box principal</span></button></li>
-      </ul>
-      <div class="espejo" aria-hidden="true"><span class="espejo__luna"></span><span class="espejo__mango"></span></div>
+      <div class="visita" data-visita>
+        <div class="visita__marco">
+          <button class="sala is-activa" type="button" data-i="0" data-grande="assets/img/clinica-logo-2400.webp" aria-label="Ver en grande: Recepción">
+            <img data-foto loading="lazy" src="assets/img/clinica-logo-1200.webp" srcset="assets/img/clinica-logo-800.webp 800w, assets/img/clinica-logo-1200.webp 1200w" sizes="(min-width: 1000px) 820px, 92vw" width="4104" height="2736" alt="Morelló Clínica Dental en Barcelona, Sarrià-Sant Gervasi: el logotipo en la recepción">
+            <span class="sala__pie">Recepción</span>
+          </button>
+          <button class="sala" type="button" data-i="1" data-grande="assets/img/clinica-sala-espera-2400.webp" aria-label="Ver en grande: Sala de espera">
+            <img data-foto loading="lazy" src="assets/img/clinica-sala-espera-1200.webp" srcset="assets/img/clinica-sala-espera-800.webp 800w, assets/img/clinica-sala-espera-1200.webp 1200w" sizes="(min-width: 1000px) 820px, 92vw" width="4104" height="2736" alt="Sala de espera de Morelló Clínica Dental">
+            <span class="sala__pie">Sala de espera</span>
+          </button>
+          <button class="sala" type="button" data-i="2" data-grande="assets/img/clinica-sala-infantil-2400.webp" aria-label="Ver en grande: Sala de espera infantil">
+            <img data-foto loading="lazy" src="assets/img/clinica-sala-infantil-1200.webp" srcset="assets/img/clinica-sala-infantil-800.webp 800w, assets/img/clinica-sala-infantil-1200.webp 1200w" sizes="(min-width: 1000px) 820px, 92vw" width="4104" height="2736" alt="Sala de espera infantil de Morelló Clínica Dental">
+            <span class="sala__pie">Sala de espera infantil</span>
+          </button>
+          <button class="sala" type="button" data-i="3" data-grande="assets/img/clinica-gabinete-2400.webp" aria-label="Ver en grande: Box principal">
+            <img data-foto loading="lazy" src="assets/img/clinica-gabinete-1200.webp" srcset="assets/img/clinica-gabinete-800.webp 800w, assets/img/clinica-gabinete-1200.webp 1200w" sizes="(min-width: 1000px) 820px, 92vw" width="2699" height="1799" alt="Box principal de Morelló Clínica Dental">
+            <span class="sala__pie">Box principal</span>
+          </button>
+          <div class="puerta" aria-hidden="true">
+            <div class="puerta__hoja">
+              <span class="puerta__vidrio"></span>
+              <img class="puerta__marca" src="assets/img/marca-agua.webp" width="315" height="306" alt="">
+              <span class="puerta__rotulo">Muntaner 571 · 2ºC</span>
+              <span class="puerta__tirador"></span>
+            </div>
+          </div>
+        </div>
+        <ol class="visita__paradas" aria-label="Recorrido por la clínica">
+          <li><button class="parada" type="button" data-i="0" aria-pressed="true"><span class="parada__num" aria-hidden="true">1</span><span class="parada__nombre">Recepción</span></button></li>
+          <li><button class="parada" type="button" data-i="1" aria-pressed="false"><span class="parada__num" aria-hidden="true">2</span><span class="parada__nombre">Sala de espera</span></button></li>
+          <li><button class="parada" type="button" data-i="2" aria-pressed="false"><span class="parada__num" aria-hidden="true">3</span><span class="parada__nombre">Sala de espera infantil</span></button></li>
+          <li><button class="parada" type="button" data-i="3" aria-pressed="false"><span class="parada__num" aria-hidden="true">4</span><span class="parada__nombre">Box principal</span></button></li>
+        </ol>
+      </div>
 
       <div class="clinica__botones">
-        <a class="boton" href="https://www.morelloclinicadental.com/la-clinica/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--edificio" aria-hidden="true"><svg><use href="#i-edificio"/></svg><svg><use href="#i-edificio"/></svg></span><span class="boton__txt" data-t="Conozca la clínica">Conozca la clínica</span></a>
+        <a class="boton" href="https://www.morelloclinicadental.com/la-clinica/"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--edificio" aria-hidden="true"><svg><use href="#i-edificio"/></svg><svg><use href="#i-edificio"/></svg></span><span class="boton__txt" data-t="Conozca la clínica">Conozca la clínica</span></a>
         <a class="enlace" href="https://www.morelloclinicadental.com/la-clinica/photo-gallery/">Galería de fotos<svg class="ico"><use href="#i-flecha"/></svg></a>
       </div>
     </div>
@@ -545,144 +589,121 @@
       </header>
 
       <div class="donde__rejilla">
-        <div class="donde__col">
-          <figure class="donde__foto"><img data-foto loading="lazy" src="assets/img/clinica-recepcion-1280.webp" srcset="assets/img/clinica-recepcion-800.webp 800w, assets/img/clinica-recepcion-1280.webp 1280w, assets/img/clinica-recepcion-1920.webp 1920w" sizes="(min-width: 1000px) 600px, 92vw" width="2694" height="1564" alt="Recepción de Morelló Clínica Dental Barcelona"></figure>
-          <ul class="contacto">
-            <li><a class="contacto__fila" href="tel:+34934182129"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-tel"/></svg></span><span><span class="contacto__etq">Llame ahora</span><strong>934 182 129</strong></span></a></li>
-            <li><a class="contacto__fila" href="mailto:info@morelloclinicadental.com"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-mail"/></svg></span><span><span class="contacto__etq">Escríbanos</span><strong>info@morelloclinicadental.com</strong></span></a></li>
-            <li><a class="contacto__fila" href="https://goo.gl/maps/yKcNHb74snL2" target="_blank" rel="noopener"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-ruta"/></svg></span><span><span class="contacto__etq">Cómo llegar</span><strong>Carrer de Muntaner, 571 - 2ºC</strong></span></a></li>
-          </ul>
+        <figure class="donde__foto"><img data-foto loading="lazy" src="assets/img/clinica-recepcion-1280.webp" srcset="assets/img/clinica-recepcion-800.webp 800w, assets/img/clinica-recepcion-1280.webp 1280w, assets/img/clinica-recepcion-1920.webp 1920w" sizes="(min-width: 1000px) 600px, 92vw" width="2694" height="1564" alt="Recepción de Morelló Clínica Dental Barcelona"></figure>
+        <div class="donde__mapa">
+          <iframe title="Mapa: Morelló Clínica Dental en Carrer de Muntaner, 571, Barcelona" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4647.253882238056!2d2.131503570908085!3d41.40545500000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x297902793fde597!2sMorell%C3%B3+Cl%C3%ADnica+Dental!5e0!3m2!1ses!2ses!4v1519974439574"></iframe>
         </div>
-        <div class="donde__col">
-          <div class="donde__mapa">
-            <iframe title="Mapa: Morelló Clínica Dental en Carrer de Muntaner, 571, Barcelona" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4647.253882238056!2d2.131503570908085!3d41.40545500000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x297902793fde597!2sMorell%C3%B3+Cl%C3%ADnica+Dental!5e0!3m2!1ses!2ses!4v1519974439574"></iframe>
+      </div>
+
+      <ul class="contacto">
+        <li><a class="contacto__fila" href="tel:+34934182129"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-tel"/></svg></span><span><span class="contacto__etq">Llame ahora</span><strong>934 182 129</strong></span></a></li>
+        <li><a class="contacto__fila" href="mailto:info@morelloclinicadental.com"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-mail"/></svg></span><span><span class="contacto__etq">Escríbanos</span><strong>info@morelloclinicadental.com</strong></span></a></li>
+        <li><a class="contacto__fila" href="https://goo.gl/maps/yKcNHb74snL2" target="_blank" rel="noopener"><span class="contacto__ico" aria-hidden="true"><svg><use href="#i-ruta"/></svg></span><span><span class="contacto__etq">Cómo llegar</span><strong>Carrer de Muntaner, 571 - 2ºC</strong></span></a></li>
+      </ul>
+
+      <div class="agenda" data-agenda>
+        <div class="agenda__cab">
+          <h3>Horario de atención</h3>
+          <p class="agenda__estado" data-horario-estado>Lunes a viernes, con cita previa</p>
+        </div>
+        <div class="agenda__tabla" role="table" aria-label="Horario de atención de lunes a viernes">
+          <div class="agenda__eje" aria-hidden="true"><span style="--p:0">9:00</span><span style="--p:9.091">10:00</span><span style="--p:27.273">12:00</span><span style="--p:45.455">14:00</span><span style="--p:63.636">16:00</span><span style="--p:81.818">18:00</span><span style="--p:100">20:00</span></div>
+          <div class="agenda__fila" role="row" data-dia="1" style="--n:0">
+            <span class="agenda__dia" role="rowheader">Lunes</span>
+            <span class="agenda__pista" role="cell"><span class="agenda__tramo" style="--a:9.091;--b:45.455"><span>10–14 h</span></span><span class="agenda__tramo" style="--a:63.636;--b:100"><span>16–20 h</span></span></span>
           </div>
-          <div class="horario" data-horario>
-            <div class="horario__cab">
-              <h3>Horario de atención</h3>
-              <p class="horario__estado" data-horario-estado>Lunes a viernes, con cita previa</p>
-            </div>
-            <table class="horario__tabla">
-              <caption class="sr">Horario de atención de lunes a viernes</caption>
-              <thead><tr><th scope="col"><span class="sr">Turno</span></th><th scope="col" data-dia="1"><abbr title="Lunes">L</abbr></th><th scope="col" data-dia="2"><abbr title="Martes">M</abbr></th><th scope="col" data-dia="3"><abbr title="Miércoles">X</abbr></th><th scope="col" data-dia="4"><abbr title="Jueves">J</abbr></th><th scope="col" data-dia="5"><abbr title="Viernes">V</abbr></th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Mañana</th><td data-dia="1">10–14</td><td data-dia="2">10–14</td><td data-dia="3">9–14</td><td data-dia="4" class="cerrado">—</td><td data-dia="5">10–14</td></tr>
-                <tr><th scope="row">Tarde</th><td data-dia="1">16–20</td><td data-dia="2" class="cerrado">—</td><td data-dia="3">16–20</td><td data-dia="4">16–20</td><td data-dia="5" class="cerrado">—</td></tr>
-              </tbody>
-            </table>
+          <div class="agenda__fila" role="row" data-dia="2" style="--n:1">
+            <span class="agenda__dia" role="rowheader">Martes</span>
+            <span class="agenda__pista" role="cell"><span class="agenda__tramo" style="--a:9.091;--b:45.455"><span>10–14 h</span></span></span>
           </div>
+          <div class="agenda__fila" role="row" data-dia="3" style="--n:2">
+            <span class="agenda__dia" role="rowheader">Miércoles</span>
+            <span class="agenda__pista" role="cell"><span class="agenda__tramo" style="--a:0;--b:45.455"><span>9–14 h</span></span><span class="agenda__tramo" style="--a:63.636;--b:100"><span>16–20 h</span></span></span>
+          </div>
+          <div class="agenda__fila" role="row" data-dia="4" style="--n:3">
+            <span class="agenda__dia" role="rowheader">Jueves</span>
+            <span class="agenda__pista" role="cell"><span class="agenda__tramo" style="--a:63.636;--b:100"><span>16–20 h</span></span></span>
+          </div>
+          <div class="agenda__fila" role="row" data-dia="5" style="--n:4">
+            <span class="agenda__dia" role="rowheader">Viernes</span>
+            <span class="agenda__pista" role="cell"><span class="agenda__tramo" style="--a:9.091;--b:45.455"><span>10–14 h</span></span></span>
+          </div>
+          <div class="agenda__fila agenda__fila--cerrado" role="row"><span class="agenda__dia" role="rowheader">Sábado y domingo</span><span class="agenda__pista" role="cell"><span class="agenda__cerrado">Cerrado</span></span></div>
+          <span class="agenda__ahora" data-ahora aria-hidden="true"><span>Ahora</span></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ PREGUNTAS FRECUENTES ============ -->
+  <!-- ============ PREGUNTAS FRECUENTES: en una conversación de WhatsApp ============ -->
   <section class="sec sec--papel preguntas" id="preguntas" aria-labelledby="t-preguntas">
-    <div class="envoltura">
-      <header class="cab-sec">
+    <div class="envoltura preguntas__rejilla">
+      <div class="preguntas__intro">
         <h2 id="t-preguntas">Preguntas frecuentes</h2>
-        <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/">Todos los tratamientos<svg class="ico"><use href="#i-flecha"/></svg></a>
-      </header>
-      <div class="preguntas__rejilla">
-        <div class="preguntas__col">
-          <details class="pregunta">
-            <summary><span>¿Qué es Invisalign?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>El tratamiento Invisalign® es un sistema innovador de ortodoncia que se caracteriza por ser prácticamente invisible. Se basa en alineadores, férulas transparentes que se fabrican de manera personalizada para que tus dientes se muevan poco a poco y conseguir la sonrisa que tanto deseas.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Ortodoncia invisible<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
-          <details class="pregunta">
-            <summary><span>¿Cómo funciona Invisalign?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>Los alineadores mueven los dientes siguiendo una serie de movimientos cuidadosamente controlados y programados. Son removibles, así que puede quitárselos para comer. Las férulas transparentes deben llevarse 20 horas al día y no producen roces ni heridas como los clásicos brackets.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Ortodoncia invisible<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
-          <details class="pregunta">
-            <summary><span>¿Qué carillas dentales son las mejores?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>Dependiendo del cuadro que presente cada paciente, además de las preferencias de este, se podrá realizar un tratamiento u otro. Las de composite son rápidas y se pueden hacer en una única sesión; las de porcelana ofrecen unos resultados más estéticos y duraderos; las microcarillas, en algunos casos, no necesitan tallar el diente.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/estetica-dental/">Estética dental<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
-        </div>
-        <div class="preguntas__col">
-          <details class="pregunta">
-            <summary><span>¿Cuándo llevar a los niños al odontopediatra?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>La Sociedad Española de Odontopediatría recomienda que la primera revisión se realice entre los 12 y 18 meses de edad. Aproximadamente a los tres años, una vez completada la dentición primaria, se recomienda una segunda revisión. Si hay una urgencia antes (un golpe en un diente por una caída), la asistencia debe empezar en ese momento.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Odontopediatría<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
-          <details class="pregunta">
-            <summary><span>¿Cada cuánto hay que hacer la revisión a los niños?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>La determina el dentista infantil según el riesgo de caries de cada niño. Con un riesgo bajo se suele recomendar cada 6 meses. Cuando ya tienen la dentición permanente, la revisión puede ser anual, siempre según la recomendación del especialista.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Odontopediatría<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
-          <details class="pregunta">
-            <summary><span>¿Qué es un implante dental?</span><span class="pregunta__signo" aria-hidden="true"></span></summary>
-            <div class="pregunta__resp"><p>El implante dental es un tornillo de titanio (material biocompatible) que se osteointegra en nuestro hueso. El hueso crece alrededor del implante creando una unión estable y duradera sobre la que se coloca la futura prótesis, entre 3 y 6 meses después según la calidad del hueso.</p><a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/implantes-dentales/">Implantes dentales<svg class="ico"><use href="#i-flecha"/></svg></a></div>
-          </details>
+        <p>Toque una pregunta en el móvil y le respondemos con lo que explicamos en cada tratamiento.</p>
+        <a class="enlace" href="tel:+34934182129">¿Otra duda? Llame al 934 182 129<svg class="ico"><use href="#i-flecha"/></svg></a>
+      </div>
+      <div class="movil">
+        <div class="movil__pantalla">
+          <div class="wa__cab">
+            <svg class="wa__atras" aria-hidden="true"><use href="#i-atras"/></svg>
+            <span class="wa__avatar"><img src="assets/img/favicon.png" width="94" height="96" alt=""></span>
+            <span class="wa__quien"><strong>Morelló Clínica Dental</strong><span class="wa__estado" data-wa-estado>Clínica dental</span></span>
+          </div>
+          <div class="wa__chat" data-chat role="log" aria-live="polite" aria-label="Conversación">
+            <p class="burbuja burbuja--yo">¿Qué es Invisalign?</p>
+            <p class="burbuja burbuja--clinica">El tratamiento Invisalign® es un sistema innovador de ortodoncia que se caracteriza por ser prácticamente invisible. Se basa en alineadores, férulas transparentes que se fabrican de manera personalizada para que tus dientes se muevan poco a poco y conseguir la sonrisa que tanto deseas. <a href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Más sobre ortodoncia invisible</a></p>
+            <p class="burbuja burbuja--yo">¿Cómo funciona Invisalign?</p>
+            <p class="burbuja burbuja--clinica">Los alineadores mueven los dientes siguiendo una serie de movimientos cuidadosamente controlados y programados. Son removibles, así que puede quitárselos para comer. Las férulas transparentes deben llevarse 20 horas al día y no producen roces ni heridas como los clásicos brackets. <a href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Más sobre ortodoncia invisible</a></p>
+            <p class="burbuja burbuja--yo">¿Qué carillas dentales son las mejores?</p>
+            <p class="burbuja burbuja--clinica">Dependiendo del cuadro que presente cada paciente, además de las preferencias de este, se podrá realizar un tratamiento u otro. Las de composite son rápidas y se pueden hacer en una única sesión; las de porcelana ofrecen unos resultados más estéticos y duraderos; las microcarillas, en algunos casos, no necesitan tallar el diente. <a href="https://www.morelloclinicadental.com/tratamientos/estetica-dental/">Más sobre estética dental</a></p>
+            <p class="burbuja burbuja--yo">¿Cuándo llevar a los niños al odontopediatra?</p>
+            <p class="burbuja burbuja--clinica">La Sociedad Española de Odontopediatría recomienda que la primera revisión se realice entre los 12 y 18 meses de edad. Aproximadamente a los tres años, una vez completada la dentición primaria, se recomienda una segunda revisión. Si hay una urgencia antes (un golpe en un diente por una caída), la asistencia debe empezar en ese momento. <a href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Más sobre odontopediatría</a></p>
+            <p class="burbuja burbuja--yo">¿Cada cuánto hay que hacer la revisión a los niños?</p>
+            <p class="burbuja burbuja--clinica">La determina el dentista infantil según el riesgo de caries de cada niño. Con un riesgo bajo se suele recomendar cada 6 meses. Cuando ya tienen la dentición permanente, la revisión puede ser anual, siempre según la recomendación del especialista. <a href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Más sobre odontopediatría</a></p>
+            <p class="burbuja burbuja--yo">¿Qué es un implante dental?</p>
+            <p class="burbuja burbuja--clinica">El implante dental es un tornillo de titanio (material biocompatible) que se osteointegra en nuestro hueso. El hueso crece alrededor del implante creando una unión estable y duradera sobre la que se coloca la futura prótesis, entre 3 y 6 meses después según la calidad del hueso. <a href="https://www.morelloclinicadental.com/tratamientos/implantes-dentales/">Más sobre implantes dentales</a></p>
+          </div>
+          <div class="wa__respuestas" data-chat-preguntas hidden></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SOLICITE INFORMACIÓN ============ -->
+  <!-- ============ SOLICITE INFORMACIÓN: la tarjeta de cita ============ -->
   <section class="sec cita" id="cita" aria-labelledby="t-cita">
     <div class="envoltura cita__rejilla">
       <div class="cita__texto">
         <h2 id="t-cita">Solicite Información</h2>
         <p>Rellene el siguiente formulario o llame al teléfono +34 934 182 129 donde le atenderemos personalmente para resolver todas sus dudas. Además, podrá solicitar una primera visita.</p>
-        <ul class="cita__datos">
-          <li><svg class="ico"><use href="#i-tel"/></svg><a href="tel:+34934182129">934 182 129</a></li>
-          <li><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:info@morelloclinicadental.com">info@morelloclinicadental.com</a></li>
-          <li><svg class="ico"><use href="#i-reloj"/></svg><span>L y X 9/10–14 y 16–20 · M y V 10–14 · J 16–20</span></li>
-        </ul>
-        <a class="cita__nota" href="https://maps.google.com/?cid=186776409220179351" target="_blank" rel="noopener">
-          <span class="cita__nota-num">5,0</span>
-          <span class="cita__nota-txt"><span class="estrellas" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span><strong>46 opiniones en Google</strong><span>Clínica familiar desde 1982</span></span>
-        </a>
+        <a class="cita__tel" href="tel:+34934182129"><span class="cita__tel-ico" aria-hidden="true"><svg><use href="#i-tel"/></svg></span><span>934 182 129</span></a>
       </div>
 
-      <form class="formulario" id="formulario" novalidate>
-        <div class="campo campo--ancho">
-          <label for="f-trat">Tratamiento</label>
-          <select id="f-trat" name="tratamiento">
-            <option value="">Primera visita o revisión</option>
-            <option>Ortodoncia</option>
-            <option>Ortodoncia invisible</option>
-            <option>Estética dental</option>
-            <option>Odontopediatría</option>
-            <option>Blanqueamiento dental</option>
-            <option>Implantes dentales</option>
-            <option>Prótesis dental</option>
-            <option>Periodoncia</option>
-            <option>Endodoncia</option>
-            <option>Odontología conservadora</option>
-          </select>
+      <form class="tarjeta" id="formulario" novalidate>
+        <div class="tarjeta__cab">
+          <img src="assets/img/logo-morello-552.webp" width="1103" height="371" alt="Morelló Clínica Dental" loading="lazy">
+          <span class="tarjeta__tipo">Cita Online</span>
         </div>
-        <div class="campo campo--ancho">
-          <label for="f-nombre">Nombre y apellidos <span aria-hidden="true">*</span></label>
-          <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
-        </div>
-        <div class="campo">
-          <label for="f-tel">Teléfono de contacto <span aria-hidden="true">*</span></label>
-          <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required>
-        </div>
-        <div class="campo">
-          <label for="f-mail">Correo electrónico <span aria-hidden="true">*</span></label>
-          <input id="f-mail" name="correo" type="email" autocomplete="email" required>
-        </div>
-        <div class="campo">
-          <label for="f-fecha">Fecha deseada</label>
-          <input id="f-fecha" name="fecha" type="date">
-        </div>
-        <fieldset class="campo turnos">
-          <legend>Horario deseado</legend>
-          <div class="turnos__opciones">
+        <div class="tarjeta__campos">
+          <div class="linea linea--ancha"><input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder=" " required><label for="f-nombre">Nombre y apellidos *</label></div>
+          <div class="linea"><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><label for="f-tel">Teléfono de contacto *</label></div>
+          <div class="linea"><input id="f-mail" name="correo" type="email" autocomplete="email" placeholder=" " required><label for="f-mail">Correo electrónico *</label></div>
+          <div class="linea linea--fecha"><input id="f-fecha" name="fecha" type="date" placeholder=" "><label for="f-fecha">Fecha deseada</label></div>
+          <fieldset class="linea linea--turno">
+            <legend>Horario deseado</legend>
             <label class="turno"><input type="radio" name="turno" value="Por la mañana"><span>Por la mañana</span></label>
             <label class="turno"><input type="radio" name="turno" value="Por la tarde"><span>Por la tarde</span></label>
-          </div>
-          <p class="turnos__aviso" data-turnos-aviso aria-live="polite"></p>
-        </fieldset>
-        <div class="campo campo--ancho">
-          <label for="f-msg">Mensaje</label>
-          <textarea id="f-msg" name="mensaje" rows="3"></textarea>
+            <span class="turnos__aviso" data-turnos-aviso aria-live="polite"></span>
+          </fieldset>
+          <div class="linea linea--ancha"><textarea id="f-msg" name="mensaje" rows="2" placeholder=" "></textarea><label for="f-msg">Mensaje</label></div>
         </div>
-        <label class="privacidad campo--ancho"><input type="checkbox" name="privacidad" required><span>He leído y acepto las <a href="https://www.morelloclinicadental.com/politica-de-privacidad/">políticas de privacidad</a>.</span></label>
-        <div class="formulario__pie campo--ancho">
-          <button class="boton boton--grande boton--enviar" type="submit"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__ico boton__ico--mail" aria-hidden="true"><svg><use href="#i-mail"/></svg><svg><use href="#i-mail"/></svg></span><span class="boton__txt" data-t="Solicitar cita">Solicitar cita</span></button>
+        <div class="tarjeta__pie">
+          <label class="privacidad"><input type="checkbox" name="privacidad" required><span>He leído y acepto las <a href="https://www.morelloclinicadental.com/politica-de-privacidad/">políticas de privacidad</a>.</span></label>
+          <button class="boton boton--grande boton--enviar" type="submit"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--mail" aria-hidden="true"><svg><use href="#i-mail"/></svg><svg><use href="#i-mail"/></svg></span><span class="boton__txt" data-t="Solicitar cita">Solicitar cita</span></button>
           <p class="formulario__nota" data-form-nota aria-live="polite">Se abrirá su correo con la solicitud ya escrita para info@morelloclinicadental.com.</p>
         </div>
+        <div class="tarjeta__talon" aria-hidden="true"><span>Carrer de Muntaner, 571 - 2ºC · 08022 Barcelona · 934 182 129</span></div>
+        <div class="tarjeta__sello" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="46"/><path d="m40 61 13 13 27-28"/></svg><span>Solicitud preparada</span></div>
       </form>
     </div>
   </section>
@@ -766,6 +787,6 @@
   <button class="visor__btn visor__btn--cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button>
 </dialog>
 
-<script src="assets/js/main.js?v=2" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>

@@ -7,12 +7,12 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#003B5C">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
-<link rel="preload" href="assets/fonts/bespoke-slab-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/boska-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   /* Aviso de propuesta caducada: el texto del taller y la home entera en miniatura, que se recorre despacio */
-  @font-face { font-family: 'Bespoke Slab'; src: url('assets/fonts/bespoke-slab-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-  @font-face { font-family: 'Hanken Grotesk'; src: url('assets/fonts/hanken-grotesk.woff2') format('woff2'); font-weight: 300 700; font-display: swap; }
+  @font-face { font-family: 'Boska'; src: url('assets/fonts/boska-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Satoshi'; src: url('assets/fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
   :root {
     --azul: #003B5C; --azul-noche: #00263C; --cian: #05C3DE; --cian-claro: #9BE8F3; --tinta: #17293A; --gris: #556675; --papel: #F6F7F8;
     --canal: clamp(16px, 5vw, 72px);
@@ -22,7 +22,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; background: var(--papel); color: var(--tinta);
-    font-family: 'Hanken Grotesk', 'Segoe UI', system-ui, sans-serif; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.7;
+    font-family: 'Satoshi', 'Segoe UI', system-ui, sans-serif; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.7;
     -webkit-font-smoothing: antialiased; overflow-x: clip; }
   img { display: block; max-width: 100%; height: auto; }
   :focus-visible { outline: 3px solid var(--cian); outline-offset: 3px; border-radius: 3px; }
@@ -33,7 +33,7 @@
   .aviso { width: 100%; max-width: calc(1180px + 2 * var(--canal)); margin-inline: auto; padding: clamp(56px, 10svh, 104px) var(--canal) clamp(36px, 7svh, 80px);
     display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 7svh, 72px); align-items: center; }
   .aviso__texto { display: grid; gap: clamp(18px, 3svh, 28px); }
-  h1 { font-family: 'Bespoke Slab', Georgia, serif; font-weight: 500; color: var(--azul); font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.1rem); line-height: 1.14; text-wrap: balance; max-width: 19ch; }
+  h1 { font-family: 'Boska', Georgia, serif; font-weight: 500; color: var(--azul); font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.1rem); line-height: 1.14; text-wrap: balance; max-width: 19ch; }
   .mas { max-width: 34em; color: var(--gris); }
   .mas a { color: var(--azul); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; display: inline-block;
     background: linear-gradient(var(--cian), var(--cian)) 0 100% / 100% 2px no-repeat; position: relative; }
@@ -76,7 +76,7 @@
 
     <figure class="miniatura">
       <span class="ventana" tabindex="0" aria-label="Miniatura de la home propuesta">
-        <img src="assets/img/home-miniatura.webp" width="480" height="2863" alt="Miniatura de la home propuesta para Morelló Clínica Dental, completa de arriba abajo" onerror="this.closest('figure').hidden = true">
+        <img src="assets/img/home-miniatura.webp" width="480" height="2925" alt="Miniatura de la home propuesta para Morelló Clínica Dental, completa de arriba abajo" onerror="this.closest('figure').hidden = true">
       </span>
     </figure>
   </main>
