@@ -6,7 +6,19 @@ Prototipo de homepage para **Morelló Clínica Dental** ([morelloclinicadental.c
 
 **El problema que resuelve:** su web es un WordPress de 2017 con un slider pesado, textos centrados en Arial, un aviso de cookies que tapa media pantalla y tres tarjetas de tratamientos con fotos de banco. Tienen lo que más convence en una clínica (un fundador de 1982, una ortodoncista Diplomate del American Board of Orthodontics, cinco doctoras con másteres, fotos reales de la clínica en 4K y un 5,0 en Google) y casi nada de eso se ve en la home.
 
-## Ronda 3 (4-nov-2026, vigente)
+## Ronda 4 (4-nov-2026, vigente)
+
+Tras hablar Pablo con su jefe: una home sirve para atrapar al paciente, así que manda lo que ofrece la clínica y lo que la distingue; el equipo y las instalaciones pasan a un segundo plano, porque tendrán sus páginas. El diseño se mantiene.
+
+- **Bajo el hero, lo que distingue a la clínica** (en lugar de los accesos): 1982, clínica familiar fundada por el Dr. Joan Morelló Cubells · +20 años colocando implantes · 1.ª visita con diagnóstico del tipo de ortodoncia · 5,0 en Google con 46 opiniones.
+- **Somos Especialistas, protagonista:** fuera la dentadura. Los 10 servicios a la vista en una rejilla con sus fotos y, en cada uno, su valor añadido literal: Invisalign (férulas transparentes y removibles), implantes (más de 20 años), estética (microcarillas sin tallado y sin anestesia en la mayoría de los casos), ortodoncia (diagnóstico en la primera visita), odontopediatría, blanqueamiento en casa (reduce al 50 % la sensibilidad), prótesis, periodoncia (el mejor tratamiento es la prevención), endodoncia (RECIPROC® GOLD) y conservadora (lo menos invasiva posible). Al pasar el cursor sube su texto con «Pedir cita de…» y «Ver más»; en el móvil se ve todo. Cierra la rejilla «¿Está listo para realizar una consulta?». Las fotos 2:1 caben enteras en su hueco.
+- **Equipo y clínica, discretos:** una franja con las caras del equipo y tres miniaturas de la clínica que llevan a sus páginas (Equipo Humano y La clínica). Fuera la red de formación y la puerta de la recepción.
+- **¿Dónde estamos?:** mapa y contacto a la misma altura y la agenda debajo.
+- **Preguntas frecuentes:** el título va en una cinta enorme que avanza despacio hacia la izquierda (relleno, contorno y un «¿?» cian). Debajo, una tablet en horizontal con WhatsApp: las preguntas son chats con su globito de «1» sin leer, la pastilla «Toque una pregunta y le respondemos» señala la lista y la siguiente pregunta late; la conversación responde con los textos de sus páginas. En el móvil la tablet se pone vertical. Sección simétrica.
+
+La ronda 3 queda en la etiqueta `v3-home`.
+
+## Ronda 3 (4-nov-2026)
 
 «Bastante bien; no la cambies demasiado». Ajustes:
 - **Nombres de los doctores, solo al interactuar:** aparecen al pasar el cursor por el circulito del logo bordado (en el móvil, al tocarlo; se cierran al tocar fuera). El circulito invita a pulsar: un brillo blanco le da la vuelta, late con una onda y se enciende cuando la luz de la lámpara pasa por él.
