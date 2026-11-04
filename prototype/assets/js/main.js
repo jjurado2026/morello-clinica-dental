@@ -54,7 +54,42 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) abrirMenu(false); });
 
   /* ---------- titulares de sección: suben palabra a palabra al entrar ---------- */
-  $$('main h2').forEach(function (h) { if (h.closest('.panel')) return; h.setAttribute('data-palabras', ''); enPalabras(h); vigilar(h, null, '0px 0px -8% 0px'); });
+  function alinear(el) {
+    var palabras = el.textContent.trim().split(/\s+/), n = 0;
+    var envoltura = document.createElement('span'); envoltura.className = 'alinea__texto';
+    palabras.forEach(function (p, pi) {
+      var w = document.createElement('span'); w.className = 'alinea__palabra';
+      Array.prototype.forEach.call(p, function (ch) {
+        var l = document.createElement('span'); l.className = 'alinea__letra'; l.textContent = ch;
+        var a = function (s) { var x = Math.sin((n + 1) * 12.9898 + s * 78.233) * 43758.5453; return x - Math.floor(x); };
+        l.style.setProperty('--lg', ((a(1) - .5) * 26).toFixed(1) + 'deg');
+        l.style.setProperty('--ly', ((a(2) - .5) * .3).toFixed(3) + 'em');
+        l.style.setProperty('--lx', ((a(3) - .5) * .1).toFixed(3) + 'em');
+        l.style.setProperty('--li', n);
+        w.appendChild(l); n++;
+      });
+      envoltura.appendChild(w);
+      if (pi < palabras.length - 1) envoltura.appendChild(document.createTextNode(' '));
+    });
+    var alambre = document.createElement('span'); alambre.className = 'alinea__alambre'; alambre.setAttribute('aria-hidden', 'true');
+    envoltura.appendChild(alambre);
+    el.textContent = ''; el.appendChild(envoltura);
+    el.setAttribute('data-alinea', '');
+    // cada letra se endereza cuando el alambre pasa por ella
+    var total = Math.max(n - 1, 1);
+    $$('.alinea__letra', el).forEach(function (l, k) { l.style.setProperty('--ld', (.12 + k / total * .75).toFixed(2) + 's'); });
+    vigilar(el, null, '0px 0px -10% 0px');
+  }
+  $$('main h2').forEach(function (h) { if (h.closest('.panel')) return; alinear(h); });
+  // bandas cian: se subrayan al entrar
+  $$('.banda').forEach(function (b) {
+    var t = document.createElement('span'); t.className = 'banda__txt';
+    while (b.firstChild) t.appendChild(b.firstChild);
+    b.appendChild(t);
+    if (b.closest('.panel') || b.closest('.hero')) return;
+    b.setAttribute('data-subraya', ''); vigilar(b, null, '0px 0px -8% 0px');
+  });
+  $$('.cab-sec__texto, .equipo__intro, .contacto, .preguntas__intro, .cita__texto, .tarjeta__campos').forEach(function (el) { el.setAttribute('data-entra', ''); vigilar(el, null, '0px 0px -8% 0px'); });
 
   /* ---------- horario en vivo (hora de Madrid; ?ahora=d-h.mm para probar) ---------- */
   var HORARIO = { 1: [[600, 840], [960, 1200]], 2: [[600, 840]], 3: [[540, 840], [960, 1200]], 4: [[960, 1200]], 5: [[600, 840]] };
@@ -105,10 +140,14 @@
   enPalabras(h1);
   var puntos = $$('.punto', fig);
   (function lampara() {
-    var svg = $('.lampara svg', fig), cabeza = $('.lampara__cabeza', fig), luz = $('.luz', fig);
-    if (!svg || !cabeza || !luz) return;
-    if (quieto) { hero.classList.add('encendida', 'presentados'); h1.classList.add('visto'); return; }
-    var cur = null, dest = null, raf = 0, manual = false, ultimo = 0, gira = null, paso = 0, enVista = true;
+    var svg = $('.lampara svg', fig), cabeza = $('.lampara__cabeza', fig);
+    var palabrasH1 = $$('.pal', h1), bandaHero = $('.hero .banda');
+    var titular = function () { palabrasH1.forEach(function (p) { p.classList.add('encendida'); }); h1.classList.add('visto'); hero.classList.add('titulado'); if (bandaHero) { bandaHero.setAttribute('data-subraya', ''); bandaHero.classList.add('visto'); } };
+    if (!svg || !cabeza) { titular(); return; }
+    if (quieto) { hero.classList.add('encendida'); titular(); return; }
+    if (bandaHero) bandaHero.setAttribute('data-subraya', '');
+    setTimeout(titular, 4000); // por si algo falla, el titular nunca se queda apagado
+    var cur = null, dest = null, raf = 0, manual = false, ultimo = 0, gira = null, paso = 0, enVista = true, rapidez = .085;
     var apoyado = function () { return getComputedStyle($('.hero__texto')).position === 'absolute'; };
     function caraDe(p) { var c = p.getAttribute('data-cara').split(','), r = fig.getBoundingClientRect(); return { x: r.width * c[0] / 100, y: r.height * c[1] / 100 }; }
     function objetivo(nombre) {
@@ -122,7 +161,6 @@
       return { x: q.x - r.left, y: q.y - r.top };
     }
     function pintar() {
-      luz.style.transform = 'translate(' + cur.x.toFixed(1) + 'px,' + cur.y.toFixed(1) + 'px)';
       var pv = pivote(), ang = Math.atan2(cur.y - pv.y, cur.x - pv.x) * 180 / Math.PI - 90;
       ang = Math.max(-32, Math.min(32, ang * .55));
       cabeza.style.transform = 'rotate(' + ang.toFixed(1) + 'deg)';
@@ -132,7 +170,7 @@
     function bucle() {
       raf = 0;
       if (!cur || !dest) return;
-      cur.x += (dest.x - cur.x) * .085; cur.y += (dest.y - cur.y) * .085;
+      cur.x += (dest.x - cur.x) * rapidez; cur.y += (dest.y - cur.y) * rapidez;
       pintar();
       if (Math.hypot(dest.x - cur.x, dest.y - cur.y) > .4) raf = requestAnimationFrame(bucle);
     }
@@ -144,14 +182,24 @@
       var lista = apoyado() ? RECORRIDO : RECORRIDO.slice(0, 2);
       ir(objetivo(lista[paso % lista.length]));
       paso++;
-      if (paso === 2) hero.classList.add('presentados');
       gira = setTimeout(recorrer, paso <= lista.length ? 2600 : 4200);
     }
-    // se enciende: parpadeo del led, la luz cae sobre el titular y empieza el recorrido
+    // se enciende: parpadeo del led y la luz escribe el titular palabra a palabra; luego recorre a los doctores
+    function escribir(fin) {
+      var i = 0, f = fig.getBoundingClientRect(), ap = apoyado();
+      rapidez = .22;
+      (function siguiente() {
+        if (i >= palabrasH1.length) { rapidez = .085; titular(); setTimeout(fin, 700); return; }
+        var w = palabrasH1[i];
+        if (ap) { var r = w.getBoundingClientRect(); ir({ x: r.left - f.left + r.width / 2, y: r.top - f.top + r.height * .55 }); }
+        setTimeout(function () { w.classList.add('encendida'); }, ap ? 140 : 0);
+        i++; setTimeout(siguiente, ap ? 190 : 120);
+      })();
+    }
     setTimeout(function () {
-      hero.classList.add('encendiendo', 'encendida'); h1.classList.add('visto');
-      ir(objetivo(apoyado() ? 'titulo' : 'joan'));
-      setTimeout(recorrer, 900);
+      hero.classList.add('encendiendo', 'encendida');
+      if (!apoyado()) ir(objetivo('joan'));
+      setTimeout(function () { escribir(recorrer); }, 450);
     }, 350);
     // con el ratón, la lámpara sigue al cursor
     if (finoPuntero) {
@@ -159,7 +207,6 @@
         if (e.pointerType !== 'mouse') return;
         var r = fig.getBoundingClientRect();
         manual = true; ultimo = Date.now(); clearTimeout(gira);
-        hero.classList.add('presentados');
         ir({ x: e.clientX - r.left, y: e.clientY - r.top });
         setTimeout(function () { if (Date.now() - ultimo >= 3400) { manual = false; recorrer(); } }, 3500);
       });
@@ -169,6 +216,8 @@
       if (enVista && !manual) recorrer(); else clearTimeout(gira);
     }).observe(hero);
     window.addEventListener('resize', function () { if (dest) { cur = null; ir(objetivo(apoyado() ? 'titulo' : 'joan')); } });
+    // el circulito lleva un brillo que le da la vuelta
+    puntos.forEach(function (p) { var b = document.createElement('span'); b.className = 'punto__brillo'; b.setAttribute('aria-hidden', 'true'); $('.punto__boton', p).appendChild(b); });
   })();
   // tocar el aro de un doctor también lo presenta
   $$('.punto__boton').forEach(function (b) {
@@ -191,6 +240,7 @@
     var actual = '';
     var temporizadores = [];
     $$('.panel__titulo', odo).forEach(enPalabras);
+    enPalabras($('.panel__lema', odo));
     var IMPLICA = {
       ortodoncia: function (n, p) { return p <= 7; }, invisalign: function (n, p) { return p <= 7; },
       estetica: function (n) { return /^[1-4][1-3]$/.test(n); }, blanqueamiento: function (n, p) { return p <= 5; },
@@ -284,6 +334,27 @@
     document.addEventListener('click', function (e) { if (!globo.hidden && !e.target.closest('.odo__globo') && !e.target.closest('.diente')) cerrarGlobo(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !globo.hidden) cerrarGlobo(); });
     vigilar(odo, null, '0px 0px -18% 0px');
+    // ola: mientras nadie elige, cada tratamiento hace su gesto por turnos
+    var lista = $('.odo__lista', odo), olaI = 0, sobreLista = false;
+    lista.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { sobreLista = true; opciones.forEach(function (o) { o.classList.remove('saluda'); }); } });
+    lista.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') sobreLista = false; });
+    (function ola() {
+      if (!quieto && !actual && !sobreLista && odo.classList.contains('en-vista')) {
+        opciones.forEach(function (o) { o.classList.remove('saluda'); });
+        var o = opciones[olaI++ % opciones.length]; void o.offsetWidth; o.classList.add('saluda');
+      } else opciones.forEach(function (o) { o.classList.remove('saluda'); });
+      setTimeout(ola, 1500);
+    })();
+    // el botón de ayuda enseña tres tratamientos seguidos; cualquier elección lo detiene
+    var demo = null, ayuda = $('.panel__ayuda', odo);
+    var flecha = function () { var ancho = window.innerWidth >= 1100; ayuda.style.setProperty('--hacia', ancho ? '180deg' : '-90deg'); ayuda.style.setProperty('--empuje-x', ancho ? '-5px' : '0px'); ayuda.style.setProperty('--empuje-y', ancho ? '0px' : '-5px'); };
+    flecha(); window.addEventListener('resize', flecha);
+    ayuda.addEventListener('click', function () {
+      var pasos = ['ortodoncia', 'estetica', 'implantes'], k = 0;
+      (function siguiente() { elegir(pasos[k]); k++; if (k < pasos.length) demo = setTimeout(siguiente, 3400); })();
+    });
+    opciones.forEach(function (o) { o.addEventListener('click', function () { clearTimeout(demo); }); });
+    svgO.addEventListener('click', function () { clearTimeout(demo); });
   }
 
   /* ---------- cualquier «Pedir cita de…» deja el tratamiento escrito en la tarjeta ---------- */

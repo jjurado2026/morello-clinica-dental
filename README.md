@@ -6,7 +6,18 @@ Prototipo de homepage para **Morelló Clínica Dental** ([morelloclinicadental.c
 
 **El problema que resuelve:** su web es un WordPress de 2017 con un slider pesado, textos centrados en Arial, un aviso de cookies que tapa media pantalla y tres tarjetas de tratamientos con fotos de banco. Tienen lo que más convence en una clínica (un fundador de 1982, una ortodoncista Diplomate del American Board of Orthodontics, cinco doctoras con másteres, fotos reales de la clínica en 4K y un 5,0 en Google) y casi nada de eso se ve en la home.
 
-## Ronda 2 (vigente)
+## Ronda 3 (4-nov-2026, vigente)
+
+«Bastante bien; no la cambies demasiado». Ajustes:
+- **Nombres de los doctores, solo al interactuar:** aparecen al pasar el cursor por el circulito del logo bordado (en el móvil, al tocarlo; se cierran al tocar fuera). El circulito invita a pulsar: un brillo blanco le da la vuelta, late con una onda y se enciende cuando la luz de la lámpara pasa por él.
+- **Sin rastro de luz:** la lámpara ilumina con su haz, pero ya no deja el círculo de luz que la seguía.
+- **Un toque más de originalidad en el hero:** al cargar, la lámpara se enciende y su luz escribe el titular palabra a palabra; después la banda cian se dibuja como un subrayador y entran la descripción y los botones.
+- **Titulares de sección:** llegan con las letras torcidas, como dientes, y se alinean mientras un alambre cian se tensa debajo; al pasar el cursor, sus letras hacen una ola. Las bandas cian se subrayan al entrar y los textos de cabecera, contacto, preguntas y tarjeta entran por partes.
+- **Botoncitos con vida:** «Elija un tratamiento o toque un diente…» es ahora un botón que reluce, con el diente que bota y una flecha que señala la lista; al pulsarlo enseña tres tratamientos seguidos. Los pictogramas de la lista hacen su gesto por turnos, como una ola, hasta que se elige uno. «Toque un diente» late, la franja de accesos tiene una luz que la recorre y los botones de cita hacen de vez en cuando un guiño con el arco del logo.
+
+La ronda 2 queda en la etiqueta .
+
+## Ronda 2
 
 Cambios pedidos: hero más original manteniendo los nombres de los doctores, otra tipografía, más animación al pasar el cursor, «Bienvenidos» sin lupa y mucho más original, más originalidad en los botones, fotos y textos de Especialistas (conservando la dentadura), un equipo más vistoso, un horario con animación y estilo, preguntas frecuentes como un chat de WhatsApp con sus colores y un formulario más original y con menos botones, sin botones inventados.
 
