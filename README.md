@@ -15,7 +15,7 @@ Prototipo de homepage para **Morelló Clínica Dental** ([morelloclinicadental.c
 - **Titulares de sección:** llegan con las letras torcidas, como dientes, y se alinean mientras un alambre cian se tensa debajo; al pasar el cursor, sus letras hacen una ola. Las bandas cian se subrayan al entrar y los textos de cabecera, contacto, preguntas y tarjeta entran por partes.
 - **Botoncitos con vida:** «Elija un tratamiento o toque un diente…» es ahora un botón que reluce, con el diente que bota y una flecha que señala la lista; al pulsarlo enseña tres tratamientos seguidos. Los pictogramas de la lista hacen su gesto por turnos, como una ola, hasta que se elige uno. «Toque un diente» late, la franja de accesos tiene una luz que la recorre y los botones de cita hacen de vez en cuando un guiño con el arco del logo.
 
-La ronda 2 queda en la etiqueta .
+La ronda 2 queda en la etiqueta `v2-home`.
 
 ## Ronda 2
 
