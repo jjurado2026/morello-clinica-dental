@@ -50,7 +50,7 @@
 <link rel="preload" href="assets/fonts/boska-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/doctores-morello-1440.webp" imagesrcset="assets/img/doctores-morello-640.webp 640w, assets/img/doctores-morello-960.webp 960w, assets/img/doctores-morello-1440.webp 1440w, assets/img/doctores-morello-1919.webp 1919w" imagesizes="(min-width: 900px) 92vw, 100vw" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/estilos.css?v=5">
+<link rel="stylesheet" href="assets/css/estilos.css?v=6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -166,7 +166,6 @@
     <div class="hero__escena">
       <figure class="hero__foto" data-gabinete>
         <img data-foto src="assets/img/doctores-morello-1440.webp" srcset="assets/img/doctores-morello-640.webp 640w, assets/img/doctores-morello-960.webp 960w, assets/img/doctores-morello-1440.webp 1440w, assets/img/doctores-morello-1919.webp 1919w" sizes="(min-width: 900px) 92vw, 100vw" width="1919" height="905" alt="El Dr. Joan Morelló Cubells y la Dra. Carmen Morelló con la bata de la clínica" fetchpriority="high">
-        <div class="luz" aria-hidden="true"></div>
         <div class="lampara" aria-hidden="true">
           <svg viewBox="0 0 240 220">
             <defs>
@@ -292,7 +291,7 @@
         <div class="odo__lectura">
           <article class="panel panel--inicio is-activo" data-panel="inicio">
             <p class="panel__lema">En Morelló Clínica Dental tenemos una verdadera devoción por la salud bucodental. Nuestros más de 30 años en la clínica de Barcelona lo demuestran.</p>
-            <p class="panel__ayuda"><svg class="ico"><use href="#i-diente"/></svg>Elija un tratamiento o toque un diente para ver en qué consiste.</p>
+            <button class="panel__ayuda" type="button"><span class="panel__ayuda-ico" aria-hidden="true"><svg class="ico"><use href="#i-diente"/></svg></span><span class="panel__ayuda-txt">Elija un tratamiento o toque un diente para ver en qué consiste.</span><span class="panel__ayuda-flecha" aria-hidden="true"><svg class="ico"><use href="#i-flecha"/></svg></span></button>
             <p class="panel__nota">Los números son los de su ficha dental: el primero indica la zona de la boca y el segundo, la pieza, de delante hacia atrás.</p>
           </article>
 
@@ -303,7 +302,7 @@
               <p>En Morelló contamos con los tratamientos de ortodoncia más demandados y con mejores resultados. Ortodoncia lingual, brackets estéticos, cerámicos y ortodoncia invisible Invisalign®.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Realizamos un diagnóstico en la primera visita</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Ortodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de ortodoncia">Pedir cita de ortodoncia</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Ortodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de ortodoncia">Pedir cita de ortodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia/">Ver más<span class="sr"> sobre la ortodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -317,7 +316,7 @@
               <p>El tratamiento Invisalign® es un sistema innovador de ortodoncia que se caracteriza por ser prácticamente invisible. Se basa en alineadores, férulas transparentes que se fabrican de manera personalizada para que tus dientes se muevan poco a poco.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Cada alineador se lleva aproximadamente 1 semana</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Ortodoncia invisible"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de Invisalign">Pedir cita de Invisalign</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Ortodoncia invisible"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de Invisalign">Pedir cita de Invisalign</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/ortodoncia-invisible-invisalign/">Más información<span class="sr"> sobre la ortodoncia invisible</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -330,7 +329,7 @@
               <p>La solución a problemas relacionados con la salud bucal y la armonía estética de la boca en su totalidad. La importancia de lucir una bonita sonrisa natural.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Carillas de composite, de porcelana y microcarillas sin tallado</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Estética dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de estética dental">Pedir cita de estética dental</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Estética dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de estética dental">Pedir cita de estética dental</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/estetica-dental/">Ver más<span class="sr"> sobre la estética dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -344,7 +343,7 @@
               <p>La odontopediatría, también llamada odontología infantil, es la encargada de tratar los dientes de los niños, desde los primeros dientes temporales hasta que finaliza el periodo de recambio dental.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Primera revisión: entre los 12 y 18 meses de edad</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Odontopediatría"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita para mi hijo">Pedir cita para mi hijo</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Odontopediatría"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita para mi hijo">Pedir cita para mi hijo</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontopediatria/">Más información<span class="sr"> sobre la odontopediatría</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -357,7 +356,7 @@
               <p>El blanqueamiento dental es la técnica que se utiliza para conseguir blanquear entre uno y dos tonos los dientes. El que utilizamos en Morelló Clínica Dental es ambulatorio, es decir, que se realiza en casa.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Unos 10 días de tratamiento en casa</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Blanqueamiento dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de blanqueamiento">Pedir cita de blanqueamiento</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Blanqueamiento dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de blanqueamiento">Pedir cita de blanqueamiento</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/blanqueamiento-dental-barcelona/">Ver más<span class="sr"> sobre el blanqueamiento dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -370,7 +369,7 @@
               <p>Contamos con más de 20 años de experiencia en la colocación de implantes dentales con resultados muy satisfactorios. El implante dental es un tornillo de titanio (material biocompatible) que se osteointegra en nuestro hueso.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Podemos sustituir un solo diente, algunos de ellos o todos</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Implantes dentales"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de implantes">Pedir cita de implantes</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Implantes dentales"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de implantes">Pedir cita de implantes</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/implantes-dentales/">Ver más<span class="sr"> sobre los implantes dentales</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -383,7 +382,7 @@
               <p>La prótesis dental sustituye las estructuras dentales perdidas o deterioradas, devolviendo al aparato masticatorio su funcionalidad y estética. Cada prótesis es única y personalizada para cada caso y paciente.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Fija, removible, sobre implantes y estética</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Prótesis dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de prótesis">Pedir cita de prótesis</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Prótesis dental"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de prótesis">Pedir cita de prótesis</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/protesis-dental/">Ver más<span class="sr"> sobre la prótesis dental</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -396,7 +395,7 @@
               <p>La Periodoncia es la especialidad que estudia la prevención y el tratamiento de las encías y sus tejidos. El objetivo del tratamiento es eliminar la infección que origina la enfermedad mediante la eliminación de la placa bacteriana y del sarro.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>El mejor tratamiento es la prevención</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Periodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de periodoncia">Pedir cita de periodoncia</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Periodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de periodoncia">Pedir cita de periodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/periodoncia/">Ver más<span class="sr"> sobre la periodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -409,7 +408,7 @@
               <p>La endodoncia estudia la técnica y tratamiento de los conductos radiculares por donde pasan los nervios dentarios. Con la endodoncia podemos recuperar dientes dañados y devolverles su función y, de este modo, evitar la extracción.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Trabajamos con el sistema RECIPROC® GOLD</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Endodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de endodoncia">Pedir cita de endodoncia</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Endodoncia"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita de endodoncia">Pedir cita de endodoncia</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/endodoncia/">Ver más<span class="sr"> sobre la endodoncia</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -422,7 +421,7 @@
               <p>La odontología conservadora, como su nombre indica, es la técnica que se implementa para conservar una pieza dental. Los tratamientos que se aplican intentan ser lo menos invasivos posible para lograr mantener la mayor parte de la estructura del diente.</p>
               <p class="panel__dato"><svg class="ico"><use href="#i-check"/></svg>Obturaciones con resinas compuestas, altamente biocompatibles</p>
               <div class="panel__botones">
-                <a class="boton" href="#cita" data-tratamiento="Odontología conservadora"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
+                <a class="boton boton--llamada" href="#cita" data-tratamiento="Odontología conservadora"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Pedir cita">Pedir cita</span></a>
                 <a class="enlace" href="https://www.morelloclinicadental.com/tratamientos/odontologia-conservadora/">Ver más<span class="sr"> sobre la odontología conservadora</span><svg class="ico"><use href="#i-flecha"/></svg></a>
               </div>
             </div>
@@ -441,7 +440,7 @@
         <p>Su tratamiento será realizado por nuestro equipo de especialistas. ¡Pida una cita previa ahora!</p>
       </div>
       <div class="consulta__botones">
-        <a class="boton boton--claro boton--grande" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Contacte hoy mismo">Contacte hoy mismo</span></a>
+        <a class="boton boton--claro boton--grande boton--llamada" href="#cita" data-tratamiento=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--cal" aria-hidden="true"><svg><use href="#i-cal"/></svg><svg><use href="#i-cal"/></svg></span><span class="boton__txt" data-t="Contacte hoy mismo">Contacte hoy mismo</span></a>
         <a class="boton boton--claro boton--grande" href="tel:+34934182129"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg><svg><use href="#i-tel"/></svg></span><span class="boton__txt" data-t="Llame al 934 182 129">Llame al 934 182 129</span></a>
       </div>
     </div>
@@ -699,7 +698,7 @@
         </div>
         <div class="tarjeta__pie">
           <label class="privacidad"><input type="checkbox" name="privacidad" required><span>He leído y acepto las <a href="https://www.morelloclinicadental.com/politica-de-privacidad/">políticas de privacidad</a>.</span></label>
-          <button class="boton boton--grande boton--enviar" type="submit"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--mail" aria-hidden="true"><svg><use href="#i-mail"/></svg><svg><use href="#i-mail"/></svg></span><span class="boton__txt" data-t="Solicitar cita">Solicitar cita</span></button>
+          <button class="boton boton--grande boton--enviar boton--llamada" type="submit"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__arco" aria-hidden="true"></span><span class="boton__ico boton__ico--mail" aria-hidden="true"><svg><use href="#i-mail"/></svg><svg><use href="#i-mail"/></svg></span><span class="boton__txt" data-t="Solicitar cita">Solicitar cita</span></button>
           <p class="formulario__nota" data-form-nota aria-live="polite">Se abrirá su correo con la solicitud ya escrita para info@morelloclinicadental.com.</p>
         </div>
         <div class="tarjeta__talon" aria-hidden="true"><span>Carrer de Muntaner, 571 - 2ºC · 08022 Barcelona · 934 182 129</span></div>
@@ -787,6 +786,6 @@
   <button class="visor__btn visor__btn--cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button>
 </dialog>
 
-<script src="assets/js/main.js?v=5" defer></script>
+<script src="assets/js/main.js?v=6" defer></script>
 </body>
 </html>

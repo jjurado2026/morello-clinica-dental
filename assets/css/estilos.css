@@ -75,6 +75,18 @@ p { text-wrap: pretty; }
 .saltar { position: absolute; left: 12px; top: -100px; z-index: 100; background: var(--azul); color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; }
 .saltar:focus { top: 12px; }
 
+/* titulares de sección: las letras llegan torcidas, como dientes, y se alinean mientras el alambre se tensa */
+.alinea__texto { position: relative; display: inline; }
+.alinea__palabra { display: inline-block; white-space: nowrap; }
+.alinea__letra { display: inline-block; }
+.alinea__alambre { position: absolute; left: 0; right: 0; bottom: -.12em; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--cian), rgba(5, 195, 222, .2)); transform-origin: left center; transform: scaleX(0); opacity: 0; pointer-events: none; }
+.anima [data-alinea] .alinea__letra { transition: opacity .35s var(--suave), transform .95s var(--muelle); transition-delay: var(--ld, 0s); }
+.anima [data-alinea]:not(.visto) .alinea__letra { opacity: 0; transform: translate(var(--lx, 0), var(--ly, 0)) rotate(var(--lg, 0deg)); transition: none; }
+.anima [data-alinea].visto .alinea__alambre { animation: alambre 1.6s var(--sale) .1s both; }
+@keyframes alambre { 0% { transform: scaleX(0); opacity: 1; } 45% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+/* al pasar por un titular, sus letras hacen una ola */
+.anima [data-alinea].visto:hover .alinea__letra { animation: ola-letra .7s var(--muelle); animation-delay: calc(var(--li, 0) * 22ms); }
+@keyframes ola-letra { 0%, 100% { transform: none; } 40% { transform: translateY(-.08em) rotate(-2deg); } }
 /* titulares que suben palabra a palabra (una vez, al entrar) */
 .pal { display: inline-block; }
 .anima [data-palabras]:not(.visto) .pal { opacity: 0; transform: translateY(.45em); }
@@ -114,7 +126,10 @@ p { text-wrap: pretty; }
 .anima .boton:hover .boton__ico--diente, .anima .boton:focus-visible .boton__ico--diente,
 .anima .boton:hover .boton__ico--equipo, .anima .boton:focus-visible .boton__ico--equipo,
 .anima .boton:hover .boton__ico--edificio, .anima .boton:focus-visible .boton__ico--edificio { animation: brinca .6s var(--muelle); }
-/* llamadas a la acción que se dejan ver de vez en cuando */
+/* llamadas a la acción que se dejan ver de vez en cuando: el arco del logo hace un guiño */
+.anima .boton--llamada .boton__arco { animation: guino 7s var(--suave) 2.5s infinite; }
+.anima .boton--llamada:hover .boton__arco, .anima .boton--llamada:focus-visible .boton__arco { animation: none; }
+@keyframes guino { 0%, 8%, 100% { opacity: 0; transform: rotate(-75deg) scale(.55); } 12%, 20% { opacity: 1; transform: rotate(-12deg) scale(1); } 26% { opacity: 0; transform: rotate(40deg) scale(.8); } }
 .anima .hero__botones .boton__ico--tel { animation: suena-a-ratos 9s var(--suave) 5s infinite; }
 .anima .boton--llamada .boton__ico--cal { animation: salta-a-ratos 8s var(--suave) 3s infinite; }
 @keyframes suena { 0%, 100% { transform: none; } 15% { transform: rotate(-16deg); } 30% { transform: rotate(13deg); } 45% { transform: rotate(-10deg); } 60% { transform: rotate(7deg); } 75% { transform: rotate(-3deg); } }
@@ -133,8 +148,17 @@ p { text-wrap: pretty; }
 .enlace:active { opacity: .75; }
 
 /* banda cian: el subtítulo de sus diapositivas */
-.banda { display: inline-block; align-self: flex-start; background: var(--cian); color: var(--azul-noche); font-weight: 700; font-size: clamp(.95rem, .9rem + .3vw, 1.12rem); line-height: 1.35; padding: 7px 14px 8px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.banda { position: relative; isolation: isolate; display: inline-block; align-self: flex-start; background: transparent; color: var(--azul-noche); font-weight: 700; font-size: clamp(.95rem, .9rem + .3vw, 1.12rem); line-height: 1.35; padding: 7px 14px 8px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .banda--peq { font-size: .9rem; padding: 4px 11px 5px; }
+.banda::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--cian); transform-origin: left center; }
+.banda__txt { display: inline-block; }
+.anima .banda[data-subraya]:not(.visto)::before { transform: scaleX(0); }
+.anima .banda[data-subraya]:not(.visto) .banda__txt { opacity: 0; transform: translateX(-10px); }
+.anima .banda[data-subraya]::before { transition: transform .9s var(--sale) .1s; }
+.anima .banda[data-subraya] .banda__txt { transition: opacity .6s var(--suave) .55s, transform .8s var(--sale) .55s; }
+.anima .panel.is-activo .banda::before { animation: subraya .9s var(--sale) .35s both; }
+.anima .panel.is-activo .banda .banda__txt { animation: entra-banda .7s var(--sale) .75s both; }
+@keyframes subraya { from { transform: scaleX(0); } }
 
 /* ---------- barra superior ---------- */
 .barra-sup { background: var(--azul); color: #DCEBF3; font-size: .84rem; }
@@ -212,10 +236,11 @@ a.barra-sup__dato:active { opacity: .8; }
 .hero__titulo { font-size: clamp(2.3rem, 1.6rem + 3.4vw, 3.9rem); line-height: 1; font-weight: 500; text-wrap: balance; }
 .hero__desc { color: var(--gris); font-size: clamp(.98rem, .92rem + .3vw, 1.15rem); max-width: 36em; }
 .hero__botones { display: flex; flex-wrap: wrap; gap: 10px; }
-.anima .hero__titulo:not(.visto) .pal { opacity: 0; transform: translateY(.5em); }
-.anima .hero__titulo .pal { transition: opacity .8s var(--suave), transform 1s var(--sale); transition-delay: calc(.55s + var(--i, 0) * 80ms); }
-.anima .hero:not(.encendida) .hero__texto > :not(h1) { opacity: 0; transform: translateY(14px); }
-.anima .hero__texto > :not(h1) { transition: opacity .8s var(--suave) .9s, transform 1s var(--sale) .9s; }
+.anima .hero__titulo .pal { opacity: .1; transform: translateY(.14em); transition: opacity .55s var(--suave), transform .9s var(--sale); }
+.anima .hero__titulo .pal.encendida { opacity: 1; transform: none; }
+.anima .hero:not(.titulado) .hero__texto > :not(h1):not(.banda) { opacity: 0; transform: translateY(14px); }
+.anima .hero__texto > :not(h1):not(.banda) { transition: opacity .8s var(--suave) .45s, transform 1s var(--sale) .45s; }
+.anima .hero__texto > .hero__botones { transition-delay: .7s; }
 
 /* la lámpara de gabinete: cabezal ovalado con leds, asa central y horquilla */
 .lampara { position: absolute; z-index: 3; left: 33%; top: -1px; width: 20%; pointer-events: none; }
@@ -237,21 +262,25 @@ a.barra-sup__dato:active { opacity: .8; }
 .hero.encendida .lampara__punto { fill: #FFFFFF; stroke: var(--cian); }
 .anima .hero.encendiendo .lampara__halo, .anima .hero.encendiendo .lampara__haz { animation: parpadeo .8s steps(1) both; }
 @keyframes parpadeo { 0% { opacity: 0; } 20% { opacity: .8; } 32% { opacity: .1; } 48% { opacity: 1; } 100% { opacity: 1; } }
-.luz { position: absolute; z-index: 2; left: 0; top: 0; width: 26%; aspect-ratio: 1; margin: -13% 0 0 -13%; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .25) 30%, rgba(214, 246, 251, .1) 52%, rgba(255, 255, 255, 0) 70%);
-  opacity: 0; transition: opacity .9s var(--suave); }
-.hero.encendida .luz { opacity: 1; }
+
 
 /* aros sobre los logos bordados y fichas con su nombre */
 .punto { position: absolute; left: var(--x); top: var(--y); z-index: 5; }
 .punto__boton { position: absolute; left: -28px; top: -28px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; }
 .punto__boton::before { content: ''; width: clamp(26px, 3.4cqw, 54px); height: clamp(26px, 3.4cqw, 54px); border-radius: 50%; border: 2.5px solid var(--cian); box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .85), inset 0 0 0 1.5px rgba(255, 255, 255, .85); transition: transform .4s var(--muelle); }
 .punto__anillo { position: absolute; left: 50%; top: 50%; width: clamp(26px, 3.4cqw, 54px); height: clamp(26px, 3.4cqw, 54px); margin: calc(clamp(26px, 3.4cqw, 54px) / -2) 0 0 calc(clamp(26px, 3.4cqw, 54px) / -2); border-radius: 50%; border: 2px solid var(--cian); opacity: 0; }
-.anima .punto__anillo { animation: late 2.8s var(--suave) infinite; }
+.punto__brillo { position: absolute; left: 50%; top: 50%; width: clamp(26px, 3.4cqw, 54px); height: clamp(26px, 3.4cqw, 54px); margin: calc(clamp(26px, 3.4cqw, 54px) / -2) 0 0 calc(clamp(26px, 3.4cqw, 54px) / -2); border-radius: 50%; border: 2.5px solid transparent; border-top-color: #fff; border-right-color: rgba(255, 255, 255, .45); filter: drop-shadow(0 0 3px rgba(155, 232, 243, .9)); pointer-events: none; }
+.anima .punto__brillo { animation: gira 2.6s linear infinite; }
+.anima .punto:hover .punto__brillo, .anima .punto__boton:focus-visible .punto__brillo { animation-play-state: paused; }
+.punto__boton::after { content: ''; position: absolute; left: 50%; top: 50%; width: clamp(26px, 3.4cqw, 54px); height: clamp(26px, 3.4cqw, 54px); margin: calc(clamp(26px, 3.4cqw, 54px) / -2) 0 0 calc(clamp(26px, 3.4cqw, 54px) / -2); border-radius: 50%; box-shadow: 0 0 0 6px rgba(5, 195, 222, .22), 0 0 22px 6px rgba(5, 195, 222, .45); opacity: 0; transition: opacity .4s var(--suave); pointer-events: none; }
+.anima .punto__boton::after { animation: respira-aro 2.8s var(--suave) infinite; }
+.punto.iluminado .punto__boton::after, .punto__boton:hover::after, .punto__boton:focus-visible::after, .punto__boton[aria-expanded="true"]::after { animation: none; opacity: 1; }
+@keyframes respira-aro { 0%, 100% { opacity: .15; } 50% { opacity: .75; } }
+.anima .punto__anillo { animation: late 2.2s var(--suave) infinite; }
 .anima .punto--dcha .punto__anillo { animation-delay: 1.4s; }
-.hero.fuera .punto__anillo { animation-play-state: paused; }
+.hero.fuera .punto__anillo, .hero.fuera .punto__brillo, .hero.fuera .punto__boton::after { animation-play-state: paused; }
 .anima .punto:hover .punto__anillo, .anima .punto.iluminado .punto__anillo { animation: none; opacity: 0; }
-@keyframes late { 0% { opacity: .9; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.7); } }
+@keyframes late { 0% { opacity: .95; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.9); } }
 .punto__boton:hover::before, .punto__boton:focus-visible::before, .punto.iluminado .punto__boton::before { transform: scale(1.18); }
 .punto__boton:active::before { transform: scale(1.05); }
 .punto__ficha { position: absolute; bottom: 20px; width: max-content; max-width: 250px; display: grid; gap: 0; padding: 9px 14px 10px; background: #fff; border-radius: 10px; box-shadow: var(--sombra-3); font-size: .8rem; line-height: 1.35; color: var(--gris); pointer-events: none;
@@ -259,12 +288,15 @@ a.barra-sup__dato:active { opacity: .8; }
 .punto__ficha { left: 30px; transform-origin: left bottom; border-left: 3px solid var(--cian); }
 .punto__ficha strong { font-family: var(--f-titular); font-weight: 500; font-size: 1.12rem; line-height: 1.15; color: var(--azul); }
 .punto__ficha em { font-style: normal; font-weight: 700; color: var(--cian-hondo); max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-4px); transition: opacity .35s, transform .45s var(--sale); }
-.hero.presentados .punto__ficha, .punto:hover .punto__ficha, .punto__boton:focus-visible + .punto__ficha, .punto__boton[aria-expanded="true"] + .punto__ficha { opacity: 1; transform: none; }
-.punto.iluminado .punto__ficha, .punto:hover .punto__ficha, .punto__boton[aria-expanded="true"] + .punto__ficha { transform: scale(1.06); }
-.punto.iluminado .punto__ficha em, .punto:hover .punto__ficha em, .punto__boton[aria-expanded="true"] + .punto__ficha em { max-height: 2em; opacity: 1; transform: none; }
+.punto:hover .punto__ficha, .punto__boton:focus-visible + .punto__ficha, .punto__boton[aria-expanded="true"] + .punto__ficha { opacity: 1; transform: none; }
+.punto:hover .punto__ficha, .punto__boton[aria-expanded="true"] + .punto__ficha { transform: scale(1.04); }
+.punto:hover .punto__ficha em, .punto__boton:focus-visible + .punto__ficha em, .punto__boton[aria-expanded="true"] + .punto__ficha em { max-height: 2em; opacity: 1; transform: none; }
 
 /* franja de accesos */
-.franja { background: var(--azul-noche); color: #fff; position: relative; z-index: 1; }
+.franja { background: var(--azul-noche); color: #fff; position: relative; z-index: 1; overflow: hidden; }
+.franja::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 22%; pointer-events: none; background: linear-gradient(100deg, transparent, rgba(155, 232, 243, .12), transparent); transform: translateX(-120%); }
+.anima .franja.en-vista::after { animation: recorre-franja 9s var(--suave) 2s infinite; }
+@keyframes recorre-franja { 0% { transform: translateX(-120%); } 30%, 100% { transform: translateX(560%); } }
 .franja__dentro { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .acceso { display: flex; align-items: center; gap: 14px; min-height: 76px; padding: 14px 4px; text-decoration: none; color: inherit; position: relative; }
 .acceso::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--cian); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--sale); }
@@ -313,7 +345,8 @@ a.barra-sup__dato:active { opacity: .8; }
 .opcion__ico .pi-puente { stroke-width: 2.4; }
 .opcion__nombre { position: relative; flex: 1; }
 .opcion::after { content: ''; width: 8px; height: 8px; flex: none; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg) translateX(-4px); opacity: 0; transition: opacity .25s, transform .4s var(--muelle); }
-.opcion:hover .opcion__fondo, .opcion:focus-visible .opcion__fondo { opacity: 1; }
+.opcion:hover .opcion__fondo, .opcion:focus-visible .opcion__fondo, .opcion.saluda .opcion__fondo { opacity: 1; }
+.opcion.saluda .opcion__ico { transform: scale(1.08); }
 .opcion:hover::after, .opcion:focus-visible::after { opacity: 1; transform: rotate(45deg); }
 .opcion:hover .opcion__ico, .opcion:focus-visible .opcion__ico { transform: scale(1.06); }
 .opcion:active .opcion__nombre { transform: scale(.98); }
@@ -327,19 +360,19 @@ a.barra-sup__dato:active { opacity: .8; }
 .odo__lista:hover .opcion[aria-pressed="true"]:not(:hover) .opcion__ico { background: var(--cian-lavado); }
 .odo__lista:hover .opcion[aria-pressed="true"]:not(:hover) .opcion__ico svg { stroke: var(--azul); }
 /* cada pictograma hace su gesto */
-.anima .opcion:hover .pi-b, .anima .opcion[aria-pressed="true"] .pi-b { animation: pi-pop .6s var(--muelle) both; }
-.anima .opcion:hover .pi-b2, .anima .opcion[aria-pressed="true"] .pi-b2 { animation-delay: .12s; }
-.anima .opcion:hover .pi-alambre, .anima .opcion[aria-pressed="true"] .pi-alambre { animation: pi-tensa .7s var(--sale) both; }
-.anima .opcion:hover .pi-ferula, .anima .opcion[aria-pressed="true"] .pi-ferula { animation: pi-encaja .8s var(--muelle) both; }
-.anima .opcion:hover .pi-chispa, .anima .opcion[aria-pressed="true"] .pi-chispa { animation: pi-chispa .9s var(--muelle) both; }
-.anima .opcion:hover .pi-peque, .anima .opcion[aria-pressed="true"] .pi-peque { animation: pi-bota .9s var(--suave) both; }
-.anima .opcion:hover .pi-brillo, .anima .opcion[aria-pressed="true"] .pi-brillo { animation: pi-brillo .8s var(--suave) both; }
-.anima .opcion:hover .pi-tornillo, .anima .opcion[aria-pressed="true"] .pi-tornillo { animation: pi-atornilla .8s var(--sale) both; }
-.anima .opcion:hover .pi-pontico, .anima .opcion[aria-pressed="true"] .pi-pontico { animation: pi-encaja .7s var(--muelle) both; }
-.anima .opcion:hover .pi-puente, .anima .opcion[aria-pressed="true"] .pi-puente { animation: pi-tensa .6s var(--sale) .2s both; }
-.anima .opcion:hover .pi-encia, .anima .opcion[aria-pressed="true"] .pi-encia { animation: pi-encia 1s var(--suave) both; }
-.anima .opcion:hover .pi-canal, .anima .opcion[aria-pressed="true"] .pi-canal { animation: pi-canal .8s var(--sale) both; }
-.anima .opcion:hover .pi-empaste, .anima .opcion[aria-pressed="true"] .pi-empaste { animation: pi-pop .6s var(--muelle) both; }
+.anima .opcion:hover .pi-b, .anima .opcion[aria-pressed="true"] .pi-b, .anima .opcion.saluda .pi-b { animation: pi-pop .6s var(--muelle) both; }
+.anima .opcion:hover .pi-b2, .anima .opcion[aria-pressed="true"] .pi-b2, .anima .opcion.saluda .pi-b2 { animation-delay: .12s; }
+.anima .opcion:hover .pi-alambre, .anima .opcion[aria-pressed="true"] .pi-alambre, .anima .opcion.saluda .pi-alambre { animation: pi-tensa .7s var(--sale) both; }
+.anima .opcion:hover .pi-ferula, .anima .opcion[aria-pressed="true"] .pi-ferula, .anima .opcion.saluda .pi-ferula { animation: pi-encaja .8s var(--muelle) both; }
+.anima .opcion:hover .pi-chispa, .anima .opcion[aria-pressed="true"] .pi-chispa, .anima .opcion.saluda .pi-chispa { animation: pi-chispa .9s var(--muelle) both; }
+.anima .opcion:hover .pi-peque, .anima .opcion[aria-pressed="true"] .pi-peque, .anima .opcion.saluda .pi-peque { animation: pi-bota .9s var(--suave) both; }
+.anima .opcion:hover .pi-brillo, .anima .opcion[aria-pressed="true"] .pi-brillo, .anima .opcion.saluda .pi-brillo { animation: pi-brillo .8s var(--suave) both; }
+.anima .opcion:hover .pi-tornillo, .anima .opcion[aria-pressed="true"] .pi-tornillo, .anima .opcion.saluda .pi-tornillo { animation: pi-atornilla .8s var(--sale) both; }
+.anima .opcion:hover .pi-pontico, .anima .opcion[aria-pressed="true"] .pi-pontico, .anima .opcion.saluda .pi-pontico { animation: pi-encaja .7s var(--muelle) both; }
+.anima .opcion:hover .pi-puente, .anima .opcion[aria-pressed="true"] .pi-puente, .anima .opcion.saluda .pi-puente { animation: pi-tensa .6s var(--sale) .2s both; }
+.anima .opcion:hover .pi-encia, .anima .opcion[aria-pressed="true"] .pi-encia, .anima .opcion.saluda .pi-encia { animation: pi-encia 1s var(--suave) both; }
+.anima .opcion:hover .pi-canal, .anima .opcion[aria-pressed="true"] .pi-canal, .anima .opcion.saluda .pi-canal { animation: pi-canal .8s var(--sale) both; }
+.anima .opcion:hover .pi-empaste, .anima .opcion[aria-pressed="true"] .pi-empaste, .anima .opcion.saluda .pi-empaste { animation: pi-pop .6s var(--muelle) both; }
 @keyframes pi-pop { 0% { transform: scale(.2); opacity: 0; } 60% { transform: scale(1.3); opacity: 1; } 100% { transform: none; } }
 @keyframes pi-tensa { from { transform: scaleX(.2); opacity: 0; } }
 @keyframes pi-encaja { 0% { transform: translateY(-8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
@@ -353,6 +386,8 @@ a.barra-sup__dato:active { opacity: .8; }
 .odo__lienzo { position: relative; justify-self: center; width: 100%; max-width: min(340px, 100%); }
 .odo__svg { width: 100%; height: auto; overflow: visible; user-select: none; -webkit-user-select: none; }
 .odo__pista { position: absolute; left: 50%; top: 22%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 99px; background: rgba(255, 255, 255, .92); box-shadow: var(--sombra-1); color: var(--azul-medio); font-size: .8rem; font-weight: 700; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
+.anima .odo.en-vista:not(.tocado) .odo__pista { animation: pista 2.4s var(--suave) infinite; }
+@keyframes pista { 0%, 100% { transform: translateX(-50%); } 50% { transform: translateX(-50%) translateY(-4px) scale(1.04); } }
 .odo.tocado .odo__pista { opacity: 0; }
 .odo__globo { position: absolute; z-index: 5; left: 0; top: 0; width: 240px; padding: 12px 14px 14px; background: #fff; border-radius: 12px; box-shadow: var(--sombra-3); border-top: 3px solid var(--cian); transform-origin: center bottom; animation: globo .35s var(--muelle); }
 .odo__globo[hidden] { display: none; }
@@ -386,14 +421,31 @@ a.barra-sup__dato:active { opacity: .8; }
 .panel__botones { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: var(--e2); }
 .panel--inicio { align-content: center; gap: var(--e5); padding: var(--e6) 0; }
 .panel__lema { font-family: var(--f-titular); font-size: clamp(1.8rem, 1.4rem + 1.3vw, 2.5rem); line-height: 1.18; color: var(--azul); }
-.panel__ayuda { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px dashed var(--linea-fuerte); border-radius: 12px; color: var(--azul); font-weight: 700; }
-.panel__ayuda .ico { width: 24px; height: 24px; color: var(--cian); }
+.panel__ayuda { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: 14px; width: 100%; min-height: 64px; padding: 12px 16px 12px 12px; border: 1.5px solid var(--cian); border-radius: 14px; background: #fff; color: var(--azul); font-weight: 700; text-align: left; box-shadow: 0 10px 26px -14px rgba(5, 195, 222, .7); }
+.panel__ayuda::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--cian-lavado); opacity: 0; transition: opacity .3s; }
+.panel__ayuda::after { content: ''; position: absolute; top: -20%; bottom: -20%; left: 0; width: 26%; z-index: -1; background: linear-gradient(100deg, transparent, rgba(155, 232, 243, .55), transparent); transform: translateX(-140%) skewX(-18deg); }
+.anima .odo.en-vista .panel__ayuda::after { animation: reluce 4.5s var(--suave) 1s infinite; }
+@keyframes reluce { 0% { transform: translateX(-140%) skewX(-18deg); } 35%, 100% { transform: translateX(520%) skewX(-18deg); } }
+.panel__ayuda-ico { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 12px; background: var(--azul); }
+.panel__ayuda-ico .ico { width: 24px; height: 24px; color: #fff; }
+.anima .odo.en-vista .panel__ayuda-ico .ico { animation: bota 2.4s var(--muelle) infinite; }
+@keyframes bota { 0%, 55%, 100% { transform: none; } 65% { transform: translateY(-5px) rotate(-10deg); } 75% { transform: translateY(0) rotate(4deg); } 85% { transform: translateY(-2px); } }
+.panel__ayuda-txt { flex: 1; }
+.panel__ayuda-flecha { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; border: 1.5px solid var(--cian); color: var(--cian-hondo); }
+.panel__ayuda-flecha .ico { width: 18px; height: 18px; stroke-width: 2.2; transform: rotate(var(--hacia, -90deg)); }
+.anima .odo.en-vista .panel__ayuda-flecha { animation: senala 1.6s var(--suave) infinite; }
+@keyframes senala { 0%, 100% { transform: none; } 50% { transform: translate(var(--empuje-x, 0), var(--empuje-y, -4px)); } }
+.panel__ayuda:hover::before, .panel__ayuda:focus-visible::before { opacity: 1; }
+.anima .odo.en-vista .panel__ayuda:hover::after, .anima .odo.en-vista .panel__ayuda:hover .panel__ayuda-ico .ico, .anima .odo.en-vista .panel__ayuda:focus-visible .panel__ayuda-ico .ico { animation: none; }
+.anima .odo.en-vista .panel__ayuda:hover .panel__ayuda-flecha, .anima .odo.en-vista .panel__ayuda:focus-visible .panel__ayuda-flecha { animation: none; transform: translate(var(--empuje-x, 0), var(--empuje-y, -4px)); }
+.panel__ayuda:hover .panel__ayuda-ico, .panel__ayuda:focus-visible .panel__ayuda-ico { transform: scale(1.06); }
+.panel__ayuda-ico { transition: transform .5s var(--muelle); }
+.panel__ayuda:active .panel__ayuda-txt { opacity: .8; }
 .panel__nota { color: var(--gris-claro); font-size: .88rem; }
 /* al elegir: la foto gira como una ficha, el arco del logo la corona y el texto entra por partes */
 .anima .panel.is-activo .panel__foto { animation: voltea .9s var(--sale) both; }
 .anima .panel.is-activo .panel__arco { animation: corona 1s var(--muelle) .35s both; }
 .anima .panel.is-activo .panel__titulo .pal { animation: sube .75s var(--sale) both; animation-delay: calc(.18s + var(--i, 0) * 70ms); }
-.anima .panel.is-activo .panel__texto > .banda { animation: entra-banda .7s var(--sale) .38s both; }
 .anima .panel.is-activo .panel__texto > p:not(.banda) { animation: sube .8s var(--sale) .45s both; }
 .anima .panel.is-activo .panel__dato .ico { animation: pi-pop .6s var(--muelle) .75s both; }
 .anima .panel.is-activo .panel__botones { animation: sube .7s var(--sale) .6s both; }
@@ -854,7 +906,6 @@ dialog::backdrop { background: rgba(0, 38, 60, .6); }
   .hero__pie { display: none; }
   .punto__ficha { max-width: 170px; padding: 7px 10px 8px; }
   .punto__ficha strong { font-size: .98rem; }
-  .hero.presentados .punto:not(.iluminado):not(:hover) .punto__ficha { opacity: 0; }
   .movil { padding: 8px; border-radius: 40px; }
   .movil__pantalla { border-radius: 32px; height: min(600px, 78svh); }
 }
@@ -971,8 +1022,17 @@ dialog::backdrop { background: rgba(0, 38, 60, .6); }
    QUIETO: ?ss o «reducir movimiento». Nada se mueve y todo se ve.
    ===================================================================== */
 .quieto *, .quieto *::before, .quieto *::after { animation: none !important; transition-duration: 0s !important; transition-delay: 0s !important; }
-.quieto .luz { display: none; }
 .quieto .punto__anillo { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* entradas por partes (una vez, al entrar) */
+.anima [data-entra]:not(.visto) > * { opacity: 0; transform: translateY(16px); }
+.anima [data-entra] > * { transition: opacity .7s var(--suave), transform .9s var(--sale); }
+.anima [data-entra] > :nth-child(2) { transition-delay: .1s; } .anima [data-entra] > :nth-child(3) { transition-delay: .2s; }
+.anima [data-entra] > :nth-child(4) { transition-delay: .3s; } .anima [data-entra] > :nth-child(5) { transition-delay: .4s; }
+.anima [data-entra] > :nth-child(6) { transition-delay: .5s; } .anima [data-entra] > :nth-child(n + 7) { transition-delay: .6s; }
+.anima .panel__lema .pal { opacity: .12; transition: opacity .6s var(--suave); transition-delay: calc(var(--i, 0) * 45ms); }
+.anima .odo.visto .panel__lema .pal { opacity: 1; }
+.quieto [data-alinea] .alinea__alambre { display: none; }
