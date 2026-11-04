@@ -737,15 +737,7 @@ dialog::backdrop { background: rgba(0, 38, 60, .6); }
 .servicio__arco { position: absolute; z-index: 3; left: 12px; top: 12px; width: 58px; height: 58px; border-radius: 50%; border: 4px solid transparent; border-top-color: var(--cian); border-left-color: var(--cian); pointer-events: none; opacity: 0; transform: rotate(-90deg) scale(.6); transition: opacity .3s, transform .7s var(--muelle); }
 .servicio:hover .servicio__arco, .servicio:focus-within .servicio__arco { opacity: 1; transform: rotate(-14deg) scale(1); }
 .servicio:hover .servicio__media img, .servicio:focus-within .servicio__media img { transform: scale(1.05); }
-.servicio--picto .servicio__media { display: grid; place-items: center; aspect-ratio: 2 / 1; background: radial-gradient(circle at 50% 60%, #fff 0%, var(--cian-lavado) 70%); }
-.servicio--picto .picto { width: clamp(84px, 22%, 120px); height: auto; stroke-width: 1.2; transition: transform .7s var(--muelle); }
-.servicio--picto:hover .picto { transform: scale(1.08) rotate(-4deg); }
-.servicio--noche { background: var(--azul-noche); }
-.servicio--noche .servicio__titulo { color: #fff; }
-.servicio--noche .servicio__valor { color: #fff; }
-.servicio--noche .servicio__mas > p { color: #C6DBE6; }
-.servicio--noche .boton { --b-borde: rgba(255, 255, 255, .72); --b-texto: #fff; --b-relleno: #fff; --b-texto2: var(--azul); --b-fondo: transparent; }
-.servicio--noche .enlace, .enlace--claro { color: #fff; }
+.enlace--claro { color: #fff; }
 .servicio--consulta { justify-content: center; background: radial-gradient(120% 140% at 0% 100%, #0A3A57 0%, var(--azul-noche) 60%); color: #CFE2EC; }
 .servicio--consulta .servicio__titulo { color: #fff; font-size: clamp(2rem, 1.5rem + 1.6vw, 2.9rem); }
 .servicio--consulta .servicio__cuerpo > p { color: #C6DBE6; }
@@ -756,25 +748,21 @@ dialog::backdrop { background: rgba(0, 38, 60, .6); }
 
 /* tablets y ordenadores sin ratón: dos columnas de fichas */
 @media (min-width: 760px) {
-  .servicios__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .servicios__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(5, 1fr) auto; gap: 18px; }
   .s-ver { grid-column: 1 / -1; }
+  /* las diez fichas, iguales: la misma altura y los botones al pie */
+  .servicio--foto .servicio__cuerpo { flex: 1; grid-template-rows: auto auto 1fr; }
+  .servicio--foto .servicio__mas { grid-template-rows: auto 1fr; }
+  .servicio--foto .servicio__botones { align-self: end; flex-direction: column; align-items: flex-start; }
   .valores__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .valor { min-height: var(--alto-franja); padding-inline: 18px; }
   .valor:first-child { padding-left: 0; }
   .valor + .valor { border-left: 1px solid rgba(255, 255, 255, .12); }
   .valor:nth-child(n + 3) { border-top: 0; }
 }
-/* ordenador con ratón: rejilla de proporciones exactas (las fotos 2:1 caben enteras) y el texto sube al pasar */
+/* ordenador con ratón: diez fichas 2:1 exactas (las fotos caben enteras) y el texto sube al pasar */
 @media (min-width: 1000px) and (hover: hover) {
-  .servicios__rejilla {
-    --g: 18px; gap: var(--g);
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: calc((100cqw - 3 * var(--g)) / 4 / 1 + var(--g) / 2);
-    grid-template-areas: "inv inv imp imp" "inv inv est est" "ort ort bla bla" "ped ped bla bla" "pro per per end" "con con ver ver";
-  }
-  .s-inv { grid-area: inv; } .s-imp { grid-area: imp; } .s-est { grid-area: est; } .s-ort { grid-area: ort; } .s-ped { grid-area: ped; }
-  .s-bla { grid-area: bla; } .s-pro { grid-area: pro; } .s-per { grid-area: per; } .s-end { grid-area: end; } .s-con { grid-area: con; }
-  .s-ver { grid-area: ver; }
+  .servicios__rejilla { --g: 18px; gap: var(--g); grid-template-rows: repeat(5, calc((100cqw - var(--g)) / 4)) auto; }
   .servicio__titulo { font-size: clamp(1.7rem, 2.6cqw, 2.6rem); }
   /* fichas con foto: la foto entera de fondo y el texto que sube al pasar */
   .servicio--foto .servicio__media { position: absolute; inset: 0; }
@@ -787,18 +775,7 @@ dialog::backdrop { background: rgba(0, 38, 60, .6); }
   .servicio--foto:hover .servicio__mas, .servicio--foto:focus-within .servicio__mas { opacity: 1; transition-delay: .12s; }
   .servicio--foto .boton { --b-borde: rgba(255, 255, 255, .72); --b-texto: #fff; --b-relleno: #fff; --b-texto2: var(--azul); --b-fondo: transparent; }
   .servicio--foto .enlace { color: #fff; }
-  /* fichas altas: foto arriba entera y texto encima de su parte baja */
-  .servicio--alto .servicio__media { position: absolute; left: 0; right: 0; top: 0; }
-  .servicio--alto .servicio__cuerpo { position: absolute; left: 0; right: 0; bottom: 0; padding: 80px 28px 26px; }
-  .servicio--noche .servicio__cuerpo { background: linear-gradient(180deg, rgba(0, 38, 60, 0) 0%, rgba(0, 38, 60, .9) 26%, var(--azul-noche) 46%); }
-  .servicio--claro .servicio__cuerpo { background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .92) 26%, #fff 46%); }
-  /* fichas pequeñas con pictograma */
-  .servicio--picto .servicio__media { aspect-ratio: auto; flex: 1; min-height: 0; }
-  .servicio--picto .servicio__cuerpo { padding: 14px 18px 18px; gap: 8px; }
-  .servicio--picto .servicio__titulo { font-size: clamp(1.5rem, 2.1cqw, 2rem); }
-  .servicio--picto .servicio__mas > p { display: none; }
-  .servicio--picto .servicio__valor { font-size: .88rem; }
-  .servicio--picto .boton { min-height: 40px; padding: 7px 14px; font-size: .86rem; }
+  .servicio--foto .servicio__botones { flex-direction: row; align-items: center; }
   .servicio--consulta .servicio__cuerpo { padding: 28px 34px; gap: 14px; }
 }
 
