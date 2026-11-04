@@ -89,7 +89,7 @@
     if (b.closest('.panel') || b.closest('.hero')) return;
     b.setAttribute('data-subraya', ''); vigilar(b, null, '0px 0px -8% 0px');
   });
-  $$('.cab-sec__texto, .equipo__intro, .contacto, .preguntas__intro, .cita__texto, .tarjeta__campos').forEach(function (el) { el.setAttribute('data-entra', ''); vigilar(el, null, '0px 0px -8% 0px'); });
+  $$('.cab-sec__texto, .contacto, .cita__texto, .tarjeta__campos, .conozca__rejilla').forEach(function (el) { el.setAttribute('data-entra', ''); vigilar(el, null, '0px 0px -8% 0px'); });
 
   /* ---------- horario en vivo (hora de Madrid; ?ahora=d-h.mm para probar) ---------- */
   var HORARIO = { 1: [[600, 840], [960, 1200]], 2: [[600, 840]], 3: [[540, 840], [960, 1200]], 4: [[960, 1200]], 5: [[600, 840]] };
@@ -229,134 +229,6 @@
   });
   document.addEventListener('click', function (e) { if (!e.target.closest('.punto')) $$('.punto__boton').forEach(function (o) { o.setAttribute('aria-expanded', 'false'); }); });
 
-  /* ---------- odontograma ---------- */
-  var odo = $('[data-odo]');
-  if (odo) {
-    var svgO = $('.odo__svg', odo);
-    var opciones = $$('.opcion', odo);
-    var paneles = $$('.panel', odo);
-    var globo = $('.odo__globo', odo);
-    var lienzo = $('.odo__lienzo', odo);
-    var actual = '';
-    var temporizadores = [];
-    $$('.panel__titulo', odo).forEach(enPalabras);
-    enPalabras($('.panel__lema', odo));
-    var IMPLICA = {
-      ortodoncia: function (n, p) { return p <= 7; }, invisalign: function (n, p) { return p <= 7; },
-      estetica: function (n) { return /^[1-4][1-3]$/.test(n); }, blanqueamiento: function (n, p) { return p <= 5; },
-      implantes: function (n) { return n === '45' || n === '46' || n === '47'; }, protesis: function (n) { return n === '24' || n === '25' || n === '26'; },
-      endodoncia: function (n) { return n === '36'; }, conservadora: function (n) { return /^(16|26|36|46|17|47)$/.test(n); },
-    };
-    var NOMBRE = {}; opciones.forEach(function (o) { NOMBRE[o.getAttribute('data-t')] = $('.opcion__nombre', o).textContent.trim(); });
-    var limpiar = function () { temporizadores.forEach(clearTimeout); temporizadores = []; };
-    var luego = function (fn, ms) { temporizadores.push(setTimeout(fn, ms)); };
-
-    function elegir(t) {
-      limpiar();
-      odo.classList.add('tocado');
-      var mismo = t === actual;
-      actual = t;
-      opciones.forEach(function (o) { o.setAttribute('aria-pressed', String(o.getAttribute('data-t') === t)); });
-      paneles.forEach(function (p) {
-        var activo = p.getAttribute('data-panel') === (t || 'inicio');
-        if (activo && !quieto) { p.classList.remove('is-activo'); void p.offsetWidth; }
-        p.classList.toggle('is-activo', activo);
-        if (activo) p.removeAttribute('inert'); else p.setAttribute('inert', '');
-      });
-      var f = IMPLICA[t];
-      $$('.arcadas--adulto .diente', svgO).forEach(function (d) { var n = d.getAttribute('data-n'); d.classList.toggle('implicado', !!f && f(n, +n[1])); });
-      svgO.classList.toggle('con-foco', !!f);
-      if (quieto) { svgO.setAttribute('data-t', t); return; }
-      svgO.classList.remove('torcidos', 'marfil');
-      svgO.setAttribute('data-t', '');
-      void svgO.getBoundingClientRect();
-      if (t === 'ortodoncia' || t === 'invisalign') {
-        svgO.classList.add('sin-trans', 'torcidos');
-        void svgO.getBoundingClientRect();
-        svgO.classList.remove('sin-trans');
-        svgO.setAttribute('data-t', t);
-        luego(function () { svgO.classList.remove('torcidos'); }, t === 'invisalign' ? 900 : 700);
-      } else if (t === 'blanqueamiento') {
-        svgO.classList.add('marfil'); svgO.setAttribute('data-t', t);
-        luego(function () { svgO.classList.remove('marfil'); }, 450);
-      } else {
-        luego(function () { svgO.setAttribute('data-t', t); }, mismo ? 60 : 30);
-      }
-    }
-    opciones.forEach(function (o) {
-      var fondo = document.createElement('span'); fondo.className = 'opcion__fondo'; fondo.setAttribute('aria-hidden', 'true');
-      o.insertBefore(fondo, o.firstChild);
-      o.addEventListener('click', function () { cerrarGlobo(); elegir(o.getAttribute('data-t')); });
-    });
-    var RELACION = {
-      inc: ['estetica', 'blanqueamiento', 'ortodoncia', 'invisalign'], can: ['estetica', 'ortodoncia', 'invisalign', 'blanqueamiento'],
-      pre: ['conservadora', 'endodoncia', 'ortodoncia', 'protesis'], mol: ['conservadora', 'endodoncia', 'implantes', 'periodoncia'],
-      cordal: ['conservadora', 'periodoncia'], leche: ['odontopediatria'],
-    };
-    var dienteElegido = null;
-    function nombreDiente(d) { var n = d.getAttribute('data-n'), nom = d.getAttribute('data-nombre'); return '<b>' + n + '</b>' + nom.charAt(0).toUpperCase() + nom.slice(1); }
-    function situar(d) {
-      var r = d.getBoundingClientRect(), base = lienzo.getBoundingClientRect();
-      globo.hidden = false;
-      var gw = globo.offsetWidth, gh = globo.offsetHeight;
-      var x = r.left - base.left + r.width / 2 - gw / 2; x = Math.max(-8, Math.min(x, base.width - gw + 8));
-      var arriba = r.top - base.top - gh - 10, y = arriba < -20 ? r.bottom - base.top + 10 : arriba;
-      globo.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)';
-    }
-    function mostrarNombre(d) { if (!globo.hidden && !globo.classList.contains('solo-nombre')) return; globo.classList.add('solo-nombre'); $('.odo__globo-nombre', globo).innerHTML = nombreDiente(d); situar(d); }
-    function cerrarGlobo() {
-      globo.hidden = true; globo.classList.remove('solo-nombre');
-      if (dienteElegido) { dienteElegido.classList.remove('es-elegido'); var nn = $('.num[data-n="' + dienteElegido.getAttribute('data-n') + '"]', svgO); if (nn) nn.classList.remove('es-elegido'); dienteElegido = null; }
-    }
-    function abrirDiente(d) {
-      cerrarGlobo();
-      dienteElegido = d; d.classList.add('es-elegido');
-      var nn = $('.num[data-n="' + d.getAttribute('data-n') + '"]', svgO); if (nn) nn.classList.add('es-elegido');
-      var n = d.getAttribute('data-n'), tipo = d.getAttribute('data-tipo');
-      var clave = +n[0] >= 5 ? 'leche' : (n[1] === '8' ? 'cordal' : tipo);
-      $('.odo__globo-nombre', globo).innerHTML = nombreDiente(d);
-      var cont = $('.odo__globo-opciones', globo); cont.innerHTML = '';
-      RELACION[clave].forEach(function (t) {
-        var b = document.createElement('button'); b.type = 'button'; b.className = 'mini'; b.textContent = NOMBRE[t];
-        b.addEventListener('click', function () { cerrarGlobo(); elegir(t); });
-        cont.appendChild(b);
-      });
-      situar(d); odo.classList.add('tocado');
-    }
-    svgO.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      var d = e.target.closest('.diente');
-      if (d && (globo.classList.contains('solo-nombre') || globo.hidden)) mostrarNombre(d);
-      else if (!d && globo.classList.contains('solo-nombre')) { globo.hidden = true; globo.classList.remove('solo-nombre'); }
-    });
-    svgO.addEventListener('pointerleave', function () { if (globo.classList.contains('solo-nombre')) { globo.hidden = true; globo.classList.remove('solo-nombre'); } });
-    svgO.addEventListener('click', function (e) { var d = e.target.closest('.diente'); if (d) { e.stopPropagation(); abrirDiente(d); } });
-    document.addEventListener('click', function (e) { if (!globo.hidden && !e.target.closest('.odo__globo') && !e.target.closest('.diente')) cerrarGlobo(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !globo.hidden) cerrarGlobo(); });
-    vigilar(odo, null, '0px 0px -18% 0px');
-    // ola: mientras nadie elige, cada tratamiento hace su gesto por turnos
-    var lista = $('.odo__lista', odo), olaI = 0, sobreLista = false;
-    lista.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { sobreLista = true; opciones.forEach(function (o) { o.classList.remove('saluda'); }); } });
-    lista.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') sobreLista = false; });
-    (function ola() {
-      if (!quieto && !actual && !sobreLista && odo.classList.contains('en-vista')) {
-        opciones.forEach(function (o) { o.classList.remove('saluda'); });
-        var o = opciones[olaI++ % opciones.length]; void o.offsetWidth; o.classList.add('saluda');
-      } else opciones.forEach(function (o) { o.classList.remove('saluda'); });
-      setTimeout(ola, 1500);
-    })();
-    // el botón de ayuda enseña tres tratamientos seguidos; cualquier elección lo detiene
-    var demo = null, ayuda = $('.panel__ayuda', odo);
-    var flecha = function () { var ancho = window.innerWidth >= 1100; ayuda.style.setProperty('--hacia', ancho ? '180deg' : '-90deg'); ayuda.style.setProperty('--empuje-x', ancho ? '-5px' : '0px'); ayuda.style.setProperty('--empuje-y', ancho ? '0px' : '-5px'); };
-    flecha(); window.addEventListener('resize', flecha);
-    ayuda.addEventListener('click', function () {
-      var pasos = ['ortodoncia', 'estetica', 'implantes'], k = 0;
-      (function siguiente() { elegir(pasos[k]); k++; if (k < pasos.length) demo = setTimeout(siguiente, 3400); })();
-    });
-    opciones.forEach(function (o) { o.addEventListener('click', function () { clearTimeout(demo); }); });
-    svgO.addEventListener('click', function () { clearTimeout(demo); });
-  }
-
   /* ---------- cualquier «Pedir cita de…» deja el tratamiento escrito en la tarjeta ---------- */
   var msg = $('#f-msg');
   document.addEventListener('click', function (e) {
@@ -367,138 +239,46 @@
     msg.value = t ? 'Me interesa: ' + t + '.' + (resto ? '\n' + resto : '') : resto;
   });
 
-  /* ---------- equipo: la red de dónde se formó cada doctor ---------- */
-  var red = $('[data-red]');
-  if (red) {
-    var lineas = $('.red__lineas', red), nodos = $$('.nodo', red), retratos = $$('.retrato', red), filaRetratos = $('.retratos', red), listaNodos = $('.red__nodos', red);
-    var tocadoRed = false, giroRed = null, iRed = 0, activos = [];
-    function dibujar() {
-      if (getComputedStyle(lineas).display === 'none') return;
-      var b = lineas.getBoundingClientRect(), trazos = '', puntosFin = '';
-      lineas.setAttribute('viewBox', '0 0 ' + Math.round(b.width) + ' ' + Math.round(b.height));
-      nodos.forEach(function (n) {
-        var rn = n.getBoundingClientRect(), x1 = rn.left + rn.width / 2 - b.left, y1 = rn.bottom - b.top;
-        n.getAttribute('data-de').split(' ').forEach(function (id) {
-          var rf = $('.retrato[data-doctor="' + id + '"] .retrato__foto', red).getBoundingClientRect();
-          var x2 = rf.left + rf.width / 2 - b.left, y2 = rf.top - b.top, cy = y1 + (y2 - y1) * .55;
-          trazos += '<path data-d="' + id + '" d="M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'C' + x1.toFixed(1) + ' ' + cy.toFixed(1) + ' ' + x2.toFixed(1) + ' ' + (y1 + (y2 - y1) * .45).toFixed(1) + ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1) + '"/>';
-        });
+  /* ---------- valores bajo el hero ---------- */
+  vigilar($('.valores'), null, '0px');
+
+  /* ---------- servicios: el texto sube al pasar y los pictogramas hacen su gesto ---------- */
+  var marcoServ = $('[data-servicios]');
+  if (marcoServ) {
+    var fichas = $$('.servicio', marcoServ);
+    var medir = function () {
+      fichas.forEach(function (f) {
+        var mas = $('.servicio__mas', f);
+        if (mas && f.classList.contains('servicio--foto')) f.style.setProperty('--oculto', (mas.offsetHeight + 8) + 'px');
       });
-      retratos.forEach(function (r) { var rf = $('.retrato__foto', r).getBoundingClientRect(); puntosFin += '<circle data-d="' + r.getAttribute('data-doctor') + '" cx="' + (rf.left + rf.width / 2 - b.left).toFixed(1) + '" cy="' + (rf.top - b.top).toFixed(1) + '" r="4.5"/>'; });
-      lineas.innerHTML = trazos + puntosFin;
-      marcarLineas();
-    }
-    function marcarLineas() { $$('path, circle', lineas).forEach(function (p) { p.classList.toggle('activa', activos.indexOf(p.getAttribute('data-d')) >= 0); }); }
-    function activar(ids) {
-      activos = ids;
-      red.classList.toggle('enfocada', !!ids.length); filaRetratos.classList.toggle('enfocada', !!ids.length);
-      retratos.forEach(function (r) { r.classList.toggle('activo', ids.indexOf(r.getAttribute('data-doctor')) >= 0); });
-      nodos.forEach(function (n) { var de = n.getAttribute('data-de').split(' '); n.classList.toggle('activo', ids.some(function (id) { return de.indexOf(id) >= 0; })); });
-      marcarLineas();
-    }
-    function girar() {
-      clearTimeout(giroRed);
-      if (tocadoRed || quieto || !red.classList.contains('en-vista')) return;
-      activar([retratos[iRed % retratos.length].getAttribute('data-doctor')]); iRed++;
-      giroRed = setTimeout(girar, 2600);
-    }
-    retratos.forEach(function (r) {
-      r.addEventListener('pointerover', function (e) { if (e.pointerType !== 'mouse') return; tocadoRed = true; clearTimeout(giroRed); activar([r.getAttribute('data-doctor')]); });
-      $('.retrato__foto', r).addEventListener('focus', function () { tocadoRed = true; clearTimeout(giroRed); activar([r.getAttribute('data-doctor')]); });
+    };
+    medir();
+    var rsServ; window.addEventListener('resize', function () { clearTimeout(rsServ); rsServ = setTimeout(medir, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
+    vigilar(marcoServ, null, '0px 0px -10% 0px');
+    // al pasar por una ficha con pictograma, el pictograma hace su gesto; y de vez en cuando, solo
+    var conPicto = fichas.filter(function (f) { return f.classList.contains('servicio--picto'); });
+    conPicto.forEach(function (f) {
+      f.addEventListener('pointerenter', function () { f.classList.remove('gesto'); void f.offsetWidth; f.classList.add('gesto'); });
     });
-    nodos.forEach(function (n) { n.addEventListener('pointerover', function (e) { if (e.pointerType !== 'mouse') return; tocadoRed = true; clearTimeout(giroRed); activar(n.getAttribute('data-de').split(' ')); }); });
-    red.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') activar([]); });
-    // en el móvil, el doctor que queda en el centro de la fila enciende sus nodos
-    filaRetratos.addEventListener('scroll', function () {
-      if (getComputedStyle(lineas).display !== 'none') return;
-      tocadoRed = true; clearTimeout(giroRed);
-      var c = filaRetratos.getBoundingClientRect(), medio = c.left + c.width / 2, mejor = null, dist = 1e9;
-      retratos.forEach(function (r) { var b = r.getBoundingClientRect(), d = Math.abs(b.left + b.width / 2 - medio); if (d < dist) { dist = d; mejor = r; } });
-      if (mejor) activar([mejor.getAttribute('data-doctor')]);
-    }, { passive: true });
-    vigilar(red, function () { listaNodos.classList.add('visto'); filaRetratos.classList.add('visto'); setTimeout(dibujar, 50); setTimeout(dibujar, 1100); setTimeout(girar, 1200); }, '0px 0px -15% 0px');
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) girar(); else clearTimeout(giroRed); }).observe(red);
-    var rsRed; window.addEventListener('resize', function () { clearTimeout(rsRed); rsRed = setTimeout(dibujar, 150); });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(dibujar);
-  }
-  var ficha = $('#ficha');
-  $$('[data-ficha]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var datos = document.getElementById(b.getAttribute('data-ficha'));
-      var cont = b.closest('.retrato') || b.closest('.doctor');
-      $('#ficha-titulo').textContent = cont.querySelector('h3').textContent;
-      $('.ficha__cuerpo', ficha).innerHTML = datos.innerHTML;
-      if (ficha.showModal) ficha.showModal(); else ficha.setAttribute('open', '');
-      ficha._volver = b;
-    });
-  });
-  if (ficha) {
-    $('.ficha__cerrar', ficha).addEventListener('click', function () { ficha.close(); });
-    ficha.addEventListener('click', function (e) { if (e.target === ficha) ficha.close(); });
-    ficha.addEventListener('close', function () { if (ficha._volver) ficha._volver.focus(); });
-  }
-  vigilar($('.consulta'), null, '0px');
-
-  /* ---------- la clínica: se abre la puerta y se recorre ---------- */
-  var visita = $('[data-visita]');
-  if (visita) {
-    var salas = $$('.sala', visita), paradas = $$('.parada', visita), iSala = 0, autoVisita = true, pasoVisita = null, ocupada = false;
-    var PASO = 6500;
-    visita.style.setProperty('--paso', PASO + 'ms');
-    paradas.forEach(function (p) { var s = document.createElement('span'); s.className = 'parada__progreso'; s.setAttribute('aria-hidden', 'true'); p.appendChild(s); });
-    function marcar(n) {
-      salas.forEach(function (s, k) { s.classList.toggle('is-activa', k === n); });
-      paradas.forEach(function (p, k) { p.setAttribute('aria-pressed', String(k === n)); });
-    }
-    function ir(n) {
-      n = (n + salas.length) % salas.length;
-      if (quieto) { iSala = n; marcar(n); return; }
-      if (ocupada) return;
-      ocupada = true;
-      visita.classList.remove('abierta');
-      setTimeout(function () { iSala = n; marcar(n); visita.classList.add('abierta'); ocupada = false; programar(); }, 900);
-    }
-    function programar() {
-      clearTimeout(pasoVisita);
-      visita.classList.remove('en-marcha'); void visita.offsetWidth;
-      if (!autoVisita || quieto || encima || !visita.classList.contains('en-vista')) return;
-      visita.classList.add('en-marcha');
-      pasoVisita = setTimeout(function () { ir(iSala + 1); }, PASO);
-    }
-    var encima = false;
-    visita.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'mouse') return; encima = true; clearTimeout(pasoVisita); visita.classList.remove('en-marcha'); });
-    visita.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'mouse') return; encima = false; if (visita.classList.contains('abierta')) programar(); });
-    paradas.forEach(function (p, k) { p.addEventListener('click', function () { autoVisita = false; clearTimeout(pasoVisita); visita.classList.remove('en-marcha'); if (k !== iSala) ir(k); }); });
-    vigilar(visita, function () { if (quieto) return; setTimeout(function () { visita.classList.add('abierta'); setTimeout(programar, 1300); }, 450); }, '0px 0px -20% 0px');
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) { if (visita.classList.contains('abierta')) programar(); } else { clearTimeout(pasoVisita); visita.classList.remove('en-marcha'); } }).observe(visita);
-    // visor a pantalla completa
-    var visor = $('#visor'), vImg = $('.visor__marco img', visor), vPie = $('.visor__marco figcaption', visor), vI = 0;
-    function verFoto(i) {
-      vI = (i + salas.length) % salas.length;
-      var s = salas[vI], src = s.getAttribute('data-grande');
-      var pre = new Image(); pre.src = src;
-      vImg.classList.add('cambia');
-      var poner = function () { vImg.src = src; vImg.alt = $('img', s).alt; vPie.textContent = $('.sala__pie', s).textContent; vImg.classList.remove('cambia'); };
-      if (pre.complete) poner(); else { pre.onload = poner; pre.onerror = poner; }
-      var sig = new Image(); sig.src = salas[(vI + 1) % salas.length].getAttribute('data-grande');
-    }
-    salas.forEach(function (s, i) { s.addEventListener('click', function () { autoVisita = false; clearTimeout(pasoVisita); visita.classList.remove('en-marcha'); verFoto(i); if (visor.showModal) visor.showModal(); else visor.setAttribute('open', ''); visor._volver = s; }); });
-    $('.visor__btn--ant', visor).addEventListener('click', function () { verFoto(vI - 1); });
-    $('.visor__btn--sig', visor).addEventListener('click', function () { verFoto(vI + 1); });
-    $('.visor__btn--cerrar', visor).addEventListener('click', function () { visor.close(); });
-    visor.addEventListener('click', function (e) { if (e.target === visor) visor.close(); });
-    visor.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') verFoto(vI - 1); if (e.key === 'ArrowRight') verFoto(vI + 1); });
-    visor.addEventListener('close', function () { if (visor._volver) visor._volver.focus(); });
+    var iGesto = 0;
+    (function gestos() {
+      if (!quieto && marcoServ.classList.contains('en-vista') && conPicto.length) {
+        var f = conPicto[iGesto++ % conPicto.length];
+        if (!f.matches(':hover')) { f.classList.remove('gesto'); void f.offsetWidth; f.classList.add('gesto'); }
+      }
+      setTimeout(gestos, 2600);
+    })();
   }
 
-  /* ---------- preguntas: una conversación de WhatsApp ---------- */
-  var chat = $('[data-chat]'), cajaPreguntas = $('[data-chat-preguntas]'), waEstado = $('[data-wa-estado]');
-  if (chat && cajaPreguntas) {
-    var burbujas = $$('.burbuja', chat), pares = [];
-    for (var b = 0; b + 1 < burbujas.length; b += 2) pares.push({ p: burbujas[b].textContent.trim(), r: burbujas[b + 1].innerHTML });
+  /* ---------- preguntas: una tablet con la conversación de WhatsApp ---------- */
+  var tableta = $('[data-tableta]'), secPreguntas = $('#preguntas');
+  if (tableta) {
+    vigilar(secPreguntas, null, '0px 0px -10% 0px');
+    var items = $$('.wa-item', tableta), chat = $('[data-chat]', tableta), waEstado = $('[data-wa-estado]');
     var ahoraTxt = function () { try { return new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date()); } catch (e) { var n = new Date(); return n.getHours() + ':' + String(n.getMinutes()).padStart(2, '0'); } };
+    $$('[data-hora]', tableta).forEach(function (h) { h.textContent = ahoraTxt(); });
     var VISTOS = '<svg class="burbuja__vistos" viewBox="0 0 16 10" aria-hidden="true"><path d="m1 5.5 3 3L10 1.5M6.5 8.5l1 .5L14.5 1.5"/></svg>';
-    chat.innerHTML = '<span class="wa__fecha">Hoy</span>';
     var ocupado = false, tocado = false;
     var alFinal = function () { chat.scrollTo({ top: chat.scrollHeight, behavior: quieto ? 'auto' : 'smooth' }); };
     var decir = function (quien, contenido) {
@@ -508,28 +288,46 @@
       chat.appendChild(p); alFinal(); return p;
     };
     var escribiendo = function () { var d = document.createElement('div'); d.className = 'escribiendo'; d.setAttribute('aria-hidden', 'true'); d.innerHTML = '<span></span><span></span><span></span>'; chat.appendChild(d); alFinal(); return d; };
+    var siguiente = function () {
+      items.forEach(function (it) { it.classList.remove('siguiente'); });
+      var s = items.find(function (it) { return !it.classList.contains('leida'); });
+      if (s) s.classList.add('siguiente');
+    };
+    // la flecha de «Toque una pregunta» apunta a la lista: abajo en el móvil, a la izquierda con la tablet en horizontal
+    var ayudaWa = $('.wa-lista__ayuda', tableta), textoAyuda = $('[data-ayuda-texto]', tableta);
+    var orientar = function () {
+      var horizontal = window.innerWidth >= 760;
+      ayudaWa.style.setProperty('--hacia', '90deg'); ayudaWa.style.setProperty('--empuje-x', '0px'); ayudaWa.style.setProperty('--empuje-y', '3px');
+      textoAyuda.textContent = 'Toque una pregunta y le respondemos';
+      return horizontal;
+    };
+    var horizontal = orientar(); window.addEventListener('resize', function () { horizontal = orientar(); });
     async function preguntar(i) {
-      if (ocupado || !pares[i]) return;
+      var it = items[i];
+      if (ocupado || !it) return;
       ocupado = true;
-      var mia = decir('yo', pares[i].p);
-      var boton = cajaPreguntas.querySelector('[data-i="' + i + '"]'); if (boton) boton.classList.add('hecha');
+      items.forEach(function (o) { o.classList.toggle('activo', o === it); });
+      it.classList.add('leida'); siguiente();
+      var previa = $('.wa-item__previa', it), resp = $('.wa-item__respuesta', it);
+      previa.textContent = resp.textContent.trim();
+      var mia = decir('yo', $('.wa-item__pregunta', it).textContent);
       if (!quieto) {
         await espera(550); var v = $('.burbuja__vistos', mia); if (v) v.classList.add('leido');
         waEstado.classList.add('escribe'); var antes = waEstado.textContent; waEstado.textContent = 'escribiendo…';
         var t = escribiendo(); await espera(1100); t.remove();
         waEstado.classList.remove('escribe'); waEstado.textContent = antes;
       }
-      decir('clinica', pares[i].r);
+      decir('clinica', resp.innerHTML);
       ocupado = false;
     }
-    decir('clinica', 'Hola, somos Morelló Clínica Dental. Toque una pregunta y le respondemos aquí.');
-    cajaPreguntas.innerHTML = pares.map(function (x, i) { return '<button type="button" class="respuesta" data-i="' + i + '" style="--i:' + i + '"><svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg>' + x.p + '</button>'; }).join('');
-    cajaPreguntas.hidden = false;
-    cajaPreguntas.addEventListener('click', function (e) { var bt = e.target.closest('.respuesta'); if (!bt) return; tocado = true; preguntar(+bt.getAttribute('data-i')); });
+    chat.innerHTML = '<span class="wa__fecha">Hoy</span>';
+    decir('clinica', 'Hola, somos Morelló Clínica Dental. Toque una de las preguntas ' + (horizontal ? 'de la izquierda' : 'de arriba') + ' y le respondemos aquí.');
+    siguiente();
+    items.forEach(function (it, i) { it.addEventListener('click', function () { tocado = true; preguntar(i); }); });
     if (quieto) preguntar(0);
     else if ('IntersectionObserver' in window) {
-      var ioChat = new IntersectionObserver(function (e) { if (!e[0].isIntersecting) return; ioChat.disconnect(); setTimeout(function () { if (!tocado) preguntar(0); }, 800); }, { threshold: .5 });
-      ioChat.observe(chat);
+      var ioChat = new IntersectionObserver(function (e) { if (!e[0].isIntersecting) return; ioChat.disconnect(); setTimeout(function () { if (!tocado) preguntar(0); }, 1400); }, { threshold: .45 });
+      ioChat.observe(tableta);
     }
   }
 
