@@ -256,19 +256,6 @@
     var rsServ; window.addEventListener('resize', function () { clearTimeout(rsServ); rsServ = setTimeout(medir, 150); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
     vigilar(marcoServ, null, '0px 0px -10% 0px');
-    // al pasar por una ficha con pictograma, el pictograma hace su gesto; y de vez en cuando, solo
-    var conPicto = fichas.filter(function (f) { return f.classList.contains('servicio--picto'); });
-    conPicto.forEach(function (f) {
-      f.addEventListener('pointerenter', function () { f.classList.remove('gesto'); void f.offsetWidth; f.classList.add('gesto'); });
-    });
-    var iGesto = 0;
-    (function gestos() {
-      if (!quieto && marcoServ.classList.contains('en-vista') && conPicto.length) {
-        var f = conPicto[iGesto++ % conPicto.length];
-        if (!f.matches(':hover')) { f.classList.remove('gesto'); void f.offsetWidth; f.classList.add('gesto'); }
-      }
-      setTimeout(gestos, 2600);
-    })();
   }
 
   /* ---------- preguntas: una tablet con la conversación de WhatsApp ---------- */
