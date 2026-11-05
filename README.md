@@ -94,7 +94,10 @@ HTML, CSS y JavaScript puro. Cero dependencias, cero build. Fuentes autoalojadas
 Parámetros útiles: `?ss` (sin animaciones, para capturas) · `?ahora=3-11.20` (fija el día, de 0 domingo a 6 sábado, y la hora) · `?caducada` (simula la caducidad).
 
 ## Caducidad
-**Provisional, como si se enviara el 3-nov-2026:** visible hasta el **jueves 12 de noviembre de 2026 a las 23:59** (hora de Madrid). La fecha está en el primer `<script>` de `index.html` (`Date.UTC(2026, 10, 12, 23, 0)`). En local no caduca.
+Envío el viernes 6 de noviembre de 2026: visible hasta el **domingo 15 de noviembre de 2026 a las 23:59** (hora de Madrid). La fecha está en el primer `<script>` de `index.html` (`Date.UTC(2026, 10, 15, 23, 0)`). En local no caduca; `?caducada` lo simula.
+
+## Propuesta
+En `_interno/propuesta/` (no se publica): `Propuesta web Morelló Clínica Dental - Juan Jurado.pdf` (17 láminas con la plantilla de Juan Jurado, 1.500 € + 30 €/h, cinco semanas) y `Home Morelló Clínica Dental - propuesta de diseño.pdf`. Se rehacen con `medir-actual.mjs`, `medir-sector.mjs`, `generar.mjs --capturas`, `capturas-altas.mjs`, `python montar-propuesta.py`, `revisar.mjs` y `generar.mjs --pdf --home`.
 
 ## Publicar
 ```bash
