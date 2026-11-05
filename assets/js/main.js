@@ -229,25 +229,78 @@
   /* ---------- valores bajo el hero ---------- */
   vigilar($('.valores'), null, '0px');
 
-  /* ---------- servicios: en el móvil y la tablet, una fila que se desliza con flechas y barra ---------- */
+  /* ---------- servicios: en el móvil, cada grupo es una fila que se desliza con flechas y barra ---------- */
   var marcoServ = $('[data-servicios]');
   if (marcoServ) {
     vigilar(marcoServ, null, '0px 0px -10% 0px');
-    var pista = $('[data-pista]', marcoServ), barra = $('[data-barra]', marcoServ), mandos = $$('.mando', marcoServ);
-    var pintarPista = function () {
-      var total = pista.scrollWidth, ancho = pista.clientWidth, x = pista.scrollLeft;
-      barra.style.setProperty('--p', total > ancho ? ((x + ancho) / total).toFixed(3) : 1);
-      mandos[0].disabled = x < 4; mandos[1].disabled = x + ancho > total - 4;
-    };
-    mandos.forEach(function (m) {
-      m.addEventListener('click', function () {
-        var paso = $('.servicio', pista).getBoundingClientRect().width + 14;
-        pista.scrollBy({ left: +m.getAttribute('data-paso') * paso, behavior: quieto ? 'auto' : 'smooth' });
+    var pintores = $$('[data-pista]', marcoServ).map(function (pista) {
+      var mando = pista.nextElementSibling, barra = $('[data-barra]', mando), mandos = $$('.mando', mando);
+      var pintar = function () {
+        var total = pista.scrollWidth, ancho = pista.clientWidth, x = pista.scrollLeft;
+        barra.style.setProperty('--p', total > ancho ? ((x + ancho) / total).toFixed(3) : 1);
+        mandos[0].disabled = x < 4; mandos[1].disabled = x + ancho > total - 4;
+      };
+      mandos.forEach(function (m) {
+        m.addEventListener('click', function () {
+          var paso = $('.servicio', pista).getBoundingClientRect().width + 14;
+          pista.scrollBy({ left: +m.getAttribute('data-paso') * paso, behavior: quieto ? 'auto' : 'smooth' });
+        });
       });
+      pista.addEventListener('scroll', pintar, { passive: true });
+      pintar();
+      return pintar;
     });
-    pista.addEventListener('scroll', pintarPista, { passive: true });
-    window.addEventListener('resize', pintarPista);
-    pintarPista();
+    var pintarPistas = function () { pintores.forEach(function (p) { p(); }); };
+    window.addEventListener('resize', pintarPistas);
+
+    // «Ver más servicios»: las siete fichas salen del botón como cartas que se reparten, y vuelven a él al cerrar
+    var verOtros = $('[data-ver-otros]'), otros = $('[data-otros]'), txtOtros = $('[data-ver-otros-txt]');
+    var repartiendo = 0;
+    var desdeBoton = function (f, i) {
+      var b = $('.ver-otros__ico', verOtros).getBoundingClientRect(), r = f.getBoundingClientRect();
+      var dx = b.left + b.width / 2 - (r.left + r.width / 2), dy = b.top + b.height / 2 - (r.top + r.height / 2);
+      return 'translate(' + dx.toFixed(0) + 'px,' + dy.toFixed(0) + 'px) scale(.16) rotate(' + ((i % 2 ? 1 : -1) * (10 + i * 3)) + 'deg)';
+    };
+    var marcar = function (abierto) {
+      verOtros.setAttribute('aria-expanded', String(abierto));
+      txtOtros.textContent = abierto ? 'Ver menos servicios' : 'Ver más servicios';
+    };
+    var abrirOtros = function () {
+      otros.removeAttribute('hidden'); marcar(true); pintarPistas();
+      // si el botón está en la mitad de abajo, la página sube un poco para ver el reparto
+      var bv = verOtros.getBoundingClientRect();
+      if (bv.top > innerHeight * .45) window.scrollBy({ top: bv.top - 110, behavior: quieto ? 'auto' : 'smooth' });
+      if (quieto) return;
+      var fichas = $$('.servicio', otros);
+      clearTimeout(repartiendo);
+      fichas.forEach(function (f) { f.style.transition = 'none'; f.style.transform = ''; });
+      var salidas = fichas.map(desdeBoton);
+      fichas.forEach(function (f, i) { f.style.transform = salidas[i]; f.style.opacity = '0'; });
+      void otros.offsetWidth;
+      fichas.forEach(function (f, i) {
+        var d = 80 + i * 75;
+        f.style.transition = 'transform 1s cubic-bezier(.22, 1.18, .36, 1) ' + d + 'ms, opacity .45s ease ' + d + 'ms';
+        f.style.transform = ''; f.style.opacity = '';
+      });
+      clearTimeout(repartiendo);
+      repartiendo = setTimeout(function () { fichas.forEach(function (f) { f.style.transition = ''; }); }, 1700);
+    };
+    var cerrarOtros = function () {
+      marcar(false);
+      var fichas = $$('.servicio', otros), n = fichas.length;
+      var fin = function () { otros.setAttribute('hidden', 'until-found'); fichas.forEach(function (f) { f.style.transition = ''; f.style.transform = ''; f.style.opacity = ''; }); };
+      clearTimeout(repartiendo);
+      if (quieto) { fin(); return; }
+      fichas.forEach(function (f, i) {
+        var d = (n - 1 - i) * 45;
+        f.style.transition = 'transform .6s cubic-bezier(.55, 0, .7, .3) ' + d + 'ms, opacity .35s ease ' + (d + 250) + 'ms';
+        f.style.transform = desdeBoton(f, i); f.style.opacity = '0';
+      });
+      repartiendo = setTimeout(fin, (n - 1) * 45 + 650);
+    };
+    verOtros.addEventListener('click', function () { if (otros.hasAttribute('hidden')) abrirOtros(); else cerrarOtros(); });
+    // si el buscador del navegador encuentra algo dentro, se abre sin animación
+    otros.addEventListener('beforematch', function () { marcar(true); setTimeout(pintarPistas, 0); });
   }
 
   /* ---------- sobre nosotros: las salas de la clínica pasan solas (pausa con el cursor encima) ---------- */
