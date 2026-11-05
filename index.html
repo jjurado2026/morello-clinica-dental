@@ -23,12 +23,11 @@
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/favicon.png">
 <script>
-  /* Caducidad: la propuesta se ve 10 días desde su envío (el día de envío cuenta). PROVISIONAL, como si se
-     enviara el 3-nov-2026: visible hasta el jueves 12 de noviembre de 2026 a las 23:59 de Madrid
-     (13-nov 00:00 CET = 12-nov 23:00 UTC). Ajustar al día real de envío. En local no caduca;
-     ?caducada lo simula. */
+  /* Caducidad: la propuesta se ve 10 días desde su envío (el día de envío cuenta). Envío el viernes
+     6-nov-2026: visible hasta el domingo 15 de noviembre de 2026 a las 23:59 de Madrid
+     (16-nov 00:00 CET = 15-nov 23:00 UTC). En local no caduca; ?caducada lo simula. */
   (function () {
-    var fin = Date.UTC(2026, 10, 12, 23, 0);
+    var fin = Date.UTC(2026, 10, 15, 23, 0);
     if (/[?&]caducada\b/.test(location.search) || (location.protocol !== 'file:' && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && Date.now() >= fin)) {
       document.documentElement.style.display = 'none';
       location.replace('caducada.html');
