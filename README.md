@@ -6,7 +6,14 @@ Prototipo de homepage para **Morelló Clínica Dental** ([morelloclinicadental.c
 
 **El problema que resuelve:** su web es un WordPress de 2017 con un slider pesado, textos centrados en Arial, un aviso de cookies que tapa media pantalla y tres tarjetas de tratamientos con fotos de banco. Tienen lo que más convence en una clínica (un fundador de 1982, una ortodoncista Diplomate del American Board of Orthodontics, cinco doctoras con másteres, fotos reales de la clínica en 4K y un 5,0 en Google) y casi nada de eso se ve en la home.
 
-## Ronda 5 (5-nov-2026, vigente)
+## Ronda 6 (5-nov-2026, vigente)
+
+- **Somos Especialistas:** tres servicios destacados, mucho más grandes y en una sola fila: ortodoncia invisible, implantes y estética dental (los que destaca su `<title>`: «Especialistas en ortodoncia, estética e implantes»). Cada uno con su texto entero. Debajo, una pastilla discreta «Ver más servicios» con las caritas de los otros siete. Al pulsarla, las siete fichas salen del botón como cartas que se reparten y se colocan en 4 + 3 centradas; al cerrar («Ver menos servicios»), vuelven al botón. Guardadas con `hidden="until-found"`, así que el buscador del navegador las encuentra y los buscadores las leen. En el móvil, cada grupo es una fila que se desliza.
+- **Preguntas frecuentes:** fuera el texto del teléfono y el título centrado.
+
+La ronda 5 queda en la etiqueta `v5-home`.
+
+## Ronda 5 (5-nov-2026)
 
 Orden pedido por Pablo: hero, servicios, consulta, sobre nosotros, preguntas frecuentes, formulario y dónde estamos.
 
@@ -61,7 +68,7 @@ La ronda 1 queda en la etiqueta `v1-home`.
 ## La home, de arriba abajo
 1. Barra superior y cabecera fija con su teléfono, su dirección, el estado en vivo, su 5,0 en Google y sus redes; menú a sus páginas reales. En el móvil, barra fija con Llamar, Pedir cita y Cómo llegar.
 2. Hero con su H1 y su descripción literales, la banda «Excelencia odontológica con un trato cercano» y, debajo, lo que distingue a la clínica (1982 · +20 años en implantes · 1.ª visita con diagnóstico · 5,0 en Google).
-3. Somos Especialistas: los 10 tratamientos en dos filas.
+3. Somos Especialistas: tres destacados y «Ver más servicios» con los otros siete.
 4. ¿Está listo para realizar una consulta?
 5. Sobre nosotros (sus textos y el paseo por las salas).
 6. Preguntas frecuentes (tablet con WhatsApp).
@@ -70,7 +77,7 @@ La ronda 1 queda en la etiqueta `v1-home`.
 
 ## Comprobado, no asumido
 - El hero cabe entero en los 14 tamaños de la prueba, de 320×568 a 2560×1440.
-- `prueba-r5.mjs`, 23 casos con ratón, rueda, clics y dedo reales: orden de secciones, títulos iguales, 10 fichas en 2 filas y de la misma altura con todo a la vista, «Pedir cita» que escribe el tratamiento, salas que pasan solas y se paran con el cursor, foto y texto a la misma altura, la rueda y el dedo bajan la página encima de la tablet, las seis preguntas caben, fila deslizable en el móvil sin desbordar.
+- `prueba-r6.mjs`, 29 casos con ratón, rueda, clics y dedo reales (destacados, reparto y recogida de los otros siete, buscador, preguntas centradas, salas, tablet, móvil) y `movil-r6.mjs` con toques reales.
 - 28 elementos con el cursor quieto 2,5 s: ninguno se queda pillado.
 - Fotos a su proporción (15/15), cero errores de JavaScript y solo se animan `transform` y `opacity`.
 
